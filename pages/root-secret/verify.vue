@@ -17,60 +17,21 @@
             <div>
               <!--Label-->
               <label
-                for="email"
+                for="otp"
                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Enter Your OTP
               </label>
               <!--Input-->
-              <div
-                class="flex flex-row items-center justify-between mx-auto w-full max-w-xs"
-              >
-              <!--First Input-->
-                <div class="w-14 h-14">
-                  <input
-                    class="w-full h-full flex flex-col items-center justify-center text-white text-center px-5 outline-none rounded-xl border border-gray-500 text-xl bg-gray-800 focus:ring-1 focus:border-none ring-teal-600"
-                    type="text"
-                    name=""
-                    id=""
-                    placeholder="X"
-                    maxlength="1"
-                  />
-                </div>
-              <!--Second Input-->
-                <div class="w-14 h-14">
-                  <input
-                    class="w-full h-full flex flex-col items-center text-white justify-center text-center px-5 outline-none rounded-xl border border-gray-500 text-xl bg-gray-800 focus:border-none focus:ring-1 ring-teal-600"
-                    type="text"
-                    name=""
-                    id=""
-                    placeholder="X"
-                    maxlength="1"
-                  />
-                </div>
-              <!--Third Input-->
-                <div class="w-14 h-14">
-                  <input
-                    class="w-full h-full flex flex-col items-center text-white justify-center text-center px-5 outline-none rounded-xl border border-gray-500 text-xl bg-gray-800 focus:ring-1 focus:border-none ring-teal-600"
-                    type="text"
-                    name=""
-                    id=""
-                    placeholder="X"
-                    maxlength="1"
-                  />
-                </div>
-              <!--Fourth Input-->
-                <div class="w-14 h-14">
-                  <input
-                    class="w-full h-full flex flex-col items-center text-white justify-center text-center px-5 outline-none rounded-xl border border-gray-500 text-xl bg-gray-800 focus:border-none focus:ring-1 ring-teal-600"
-                    type="text"
-                    name=""
-                    id=""
-                    placeholder="X"
-                    maxlength="1"
-                  />
-                </div>
-              </div>
+              <input
+              type="text"
+                name="otp"
+                id="otp"
+                maxlength="4"
+                placeholder="Enter 4 Digit OTP"
+                class="bg-gray-50 border outline-none border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-teal-500"
+                required
+              />
             </div>
 
             <!-- --- --- New Password Section ---  --- -->
