@@ -1,12 +1,14 @@
 <template>
-  <div class="my-20 px-5">
+  <div>
     <div class="bg-[#1fb9ad] text-white p-3 rounded-lg">
       <ul class="flex gap-x-3 text-xl">
-        <li><NuxtLink ref="/">Home</NuxtLink></li>
+        <li class="cursor-pointer"><NuxtLink to="/">Home</NuxtLink></li>
         >
-        <li><NuxtLink ref="/html">HTML</NuxtLink></li>
+        <li class="cursor-pointer"><NuxtLink to="/html">HTML</NuxtLink></li>
         >
-        <li><NuxtLink ref="/apa">Apa ltu HTML ?</NuxtLink></li>
+        <li class="cursor-pointer">
+          <NuxtLink to="/apa">Apa ltu HTML ?</NuxtLink>
+        </li>
       </ul>
     </div>
     <div>
@@ -120,8 +122,6 @@
   </div>
 </template>
 
-<script setup>
-import Card from "primevue/card";
-</script>
+<script setup></script>
 
 <style scoped></style>

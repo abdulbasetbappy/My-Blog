@@ -1,9 +1,7 @@
-<script setup lang="ts">
-import Card from "primevue/card";
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <div class="container mx-auto px-10 my-20">
+  <div class="container mx-auto">
     <div class="w-full">
       <!-- Feature image -->
       <div class="mb-10">

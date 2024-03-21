@@ -1,13 +1,6 @@
-<script setup>
-definePageMeta({
-  layout: "forntend",
-});
-</script>
+<script setup></script>
 
 <template>
-  <NuxtLayout name="layout">
-    <!-- <BlogDetails /> -->
-    <HomeContent />
-  </NuxtLayout>
+  <HomeContent />
 </template>
 <style scoped></style>
