@@ -8,6 +8,7 @@ export default defineNuxtConfig({
 	  },
 	modules: [
 		'@nuxtjs/tailwindcss',
-		'nuxt-primevue'
+		'nuxt-primevue',
+		'nuxt-icon'
 	]
 })
