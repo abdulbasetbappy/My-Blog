@@ -11,12 +11,15 @@
   },
   "dependencies": {
     "nuxt": "^3.10.3",
+    "nuxt-icons": "^3.2.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.11.4",
     "nuxt-icon": "^0.6.10",
-    "nuxt-primevue": "^0.3.1"
+    "nuxt-primevue": "^0.3.1",
+    "nuxt-tiptap-editor": "^1.1.0"
+
   }
 }
