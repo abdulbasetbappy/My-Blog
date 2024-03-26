@@ -28,7 +28,7 @@
     <!-- Count Section -->
     <div class="mt-4">
       <div class="flex flex-wrap -mx-6">
-        <!--First Counter Section-->
+        <!--Total Blog Counter Section-->
         <div class="w-full px-6 sm:w-1/2 xl:w-1/3">
           <div
             class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm"
@@ -44,7 +44,7 @@
             </div>
           </div>
         </div>
-        <!--Second Counter Section-->
+        <!--Active Blog Counter Section-->
         <div class="w-full px-6 mt-6 sm:w-1/2 xl:w-1/3 sm:mt-0">
           <div
             class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm"
@@ -59,7 +59,7 @@
             </div>
           </div>
         </div>
-        <!--Third Counter Section-->
+        <!--Inactive Blog Counter Section-->
         <div class="w-full px-6 mt-6 sm:w-1/2 xl:w-1/3 xl:mt-0">
           <div
             class="flex items-center px-5 py-6 bg-white rounded-md shadow-sm"
