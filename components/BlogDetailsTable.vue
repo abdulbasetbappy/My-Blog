@@ -131,9 +131,9 @@
                     >{{ u.status }}</span
                   >
                 </td>
-                <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                <td class="px-5 py-5  text-sm bg-white border-b border-gray-200">
                   <!--Edit Button-->
-                  <button>
+                  <button class="mx-1">
                     <svg
                       class="w-6 h-6 text-teal-800 cursor-pointer"
                       viewBox="0 0 24 24"
@@ -149,7 +149,7 @@
                     </svg>
                   </button>
                   <!--Delete Button-->
-                  <button>
+                  <button class="mx-1" @click="open = true">
                     <svg
                       class="h-6 w-6 text-red-600"
                       viewBox="0 0 24 24"
@@ -193,6 +193,112 @@
                       />
                     </svg>
                   </button>
+                                    <!--Modal Section-->
+                                    <div
+                    :class="`modal ${
+                      !open && 'opacity-0 pointer-events-none'
+                    } z-50 fixed w-full h-full top-0 left-0 flex items-center justify-center`"
+                  >
+                    <div
+                      class="absolute w-full h-full bg-slate-400 opacity-5 modal-overlay"
+                      @click="open = false"
+                    />
+
+                    <div
+                      class="z-50 w-11/12 mx-auto overflow-y-auto bg-white rounded shadow-lg modal-container md:max-w-md"
+                    >
+                      <!-- Add margin if you want to see some of the overlay behind the modal -->
+                      <div class="px-6 py-10 relative modal-content">
+                        <!-- Close Icon -->
+                          <div
+                            class="z-50 absolute top-5 right-5 cursor-pointer modal-close"
+                            @click="open = false"
+                          >
+                            <svg
+                              class="text-gray-600 w-8 h-8 fill-current"
+                              xmlns="http://www.w3.org/2000/svg"
+                              viewBox="0 0 18 18"
+                            >
+                              <path
+                                d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z"
+                              />
+                            </svg>
+                          </div>
+    
+
+                        <!-- Body -->
+                        <div>
+                            <div class="flex justify-center ">
+                                <svg
+                            class="h-36 w-36 text-red-600"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M10 12V17"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                            <path
+                              d="M14 12V17"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                            <path
+                              d="M4 7H20"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                            <path
+                              d="M6 10V18C6 19.6569 7.34315 21 9 21H15C16.6569 21 18 19.6569 18 18V10"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                            <path
+                              d="M9 5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7H9V5Z"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                            />
+                          </svg>
+                            </div>
+                          <p class="text-2xl text-center font-bold">
+                            Delete Category
+                          </p>
+                          <p class="text-sm text-center text-gray-500">
+                            Are you sure you want to delete this category?
+                          </p>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="flex justify-center pt-2">
+                          <button
+                            class="px-8 py-2 text-lg mr-6 text-white bg-teal-600 rounded-lg hover:bg-teal-500 focus:outline-none"
+                            @click="open = false"
+                          >
+                            No
+                          </button>
+                          <button
+                            class="px-8 py-2 text-lg tracking-wide text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none"
+                            @click="open = false"
+                          >
+                            Yes
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--Modal Section End-->
                 </td>
               </tr>
             </tbody>
@@ -225,8 +331,10 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import { useTableData } from "../composables/useTableData";
 const { paginatedTableData } = useTableData();
+const open = ref(false);
 </script>
 
 <style scoped></style>
