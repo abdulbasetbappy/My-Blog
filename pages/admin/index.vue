@@ -1,5 +1,4 @@
 
-
 <template>
   <div>
     <!-- breadcrumb -->
@@ -176,6 +175,8 @@
 </template>
 
 
-<script>
-
+<script setup lang="ts">
+definePageMeta({
+  layout: 'admin'
+})
 </script>
