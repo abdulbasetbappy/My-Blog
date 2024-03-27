@@ -1,10 +1,10 @@
 <template>
-    <div>
+  <div>
     <!-- breadcrumb -->
     <nav class="text-sm font-semibold mb-6" aria-label="Breadcrumb">
       <ol class="list-none p-0 inline-flex">
         <li class="flex items-center text-blue-500">
-          <a href="#" class="text-gray-700">Admin</a>
+          <nuxtLink to="/admin" class="text-gray-700">Admin</nuxtLink>
           <svg
             class="fill-current w-3 h-3 mx-3"
             xmlns="http://www.w3.org/2000/svg"
@@ -16,20 +16,52 @@
           </svg>
         </li>
         <li class="flex items-center">
-          <a href="#" class="text-gray-600">Write</a>
+          <nuxtLink to="/Admin/Write" class="text-gray-600">Write</nuxtLink>
         </li>
       </ol>
     </nav>
     <!-- breadcrumb end -->
+
+    <!-- Page Title -->
+    <h3 class="text-3xl font-medium text-gray-700">Create Post</h3>
+    <!--Preview Button-->
+    <div class="flex justify-end my-4">
+      <button
+        class="flex items-center justify-center px-3 py-2 bg-teal-600 font-medium tracking-wider text-white transition-colors duration-200 transform rounded-md hover:bg-teal-500 focus:outline-none focus:bg-teal-500"
+      >
+        <svg
+          class="h-6 w-6 text-white"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.0007 12C15.0007 13.6569 13.6576 15 12.0007 15C10.3439 15 9.00073 13.6569 9.00073 12C9.00073 10.3431 10.3439 9 12.0007 9C13.6576 9 15.0007 10.3431 15.0007 12Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12.0012 5C7.52354 5 3.73326 7.94288 2.45898 12C3.73324 16.0571 7.52354 19 12.0012 19C16.4788 19 20.2691 16.0571 21.5434 12C20.2691 7.94291 16.4788 5 12.0012 5Z"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <span class="ml-2">Preview</span>
+      </button>
     </div>
+    <!-- Editor-->
+    <TipTapEditor />
+  </div>
 </template>
 
 <script setup lang="ts">
+import TipTapEditor from "../editor/index.vue";
 definePageMeta({
-  layout: 'admin'
-})
+  layout: "admin",
+});
 </script>
-
-<style scoped>
-
-</style>
+<style scoped></style>
