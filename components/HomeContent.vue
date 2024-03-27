@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup>
+definePageMeta({
+  layout: "forntend",
+});
+</script>
 
 <template>
   <div class="container mx-auto">

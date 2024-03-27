@@ -1,3 +1,8 @@
+<script setup>
+definePageMeta({
+  layout: "forntend",
+});
+</script>
 <template>
   <div>
     <div class="flex flex-col justify-center">
@@ -83,7 +88,5 @@
     </div>
   </div>
 </template>
-
-<script setup></script>
 
 <style scoped></style>
