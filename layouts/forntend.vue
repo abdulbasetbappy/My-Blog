@@ -14,9 +14,9 @@
     </div>
     <!-- layouts -->
     <div class="w-full flex-wrap flex justify-between">
-      <div class="min-h-screen pt-20 bg-gray-100 w-full md:w-1/6">
+      <div class="min-h-screen pt-20 bg-[#111827] w-full md:w-1/6">
         <!-- Content for the left sidebar -->
-        asdf
+        <ForntendLeftSidebar />
       </div>
       <div class="w-full md:w-4/6">
         <!-- Content for the main area -->
@@ -28,7 +28,6 @@
         <SideCard />
       </div>
     </div>
-
     <div
       class="footer border-t border-gray-300 fixed bottom-0 right-0 z-10 bg-[#1fb9ad] p-2 w-full"
     >

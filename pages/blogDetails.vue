@@ -1,3 +1,8 @@
+<script setup>
+definePageMeta({
+  layout: "forntend",
+});
+</script>
 <template>
   <div>
     <div class="bg-[#1fb9ad] text-white p-3 rounded-lg">
@@ -123,7 +128,5 @@
     </div>
   </div>
 </template>
-
-<script setup></script>
 
 <style scoped></style>
