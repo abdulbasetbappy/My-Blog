@@ -132,18 +132,20 @@
   <script setup>
 
 import { Color } from '@tiptap/extension-color'
-import TextStyle from '@tiptap/extension-text-style'
+  import { TextStyle } from '@tiptap/extension-text-style'
+  import { CodeBlock } from '@tiptap/extension-code-block'
+  import { CodeBlockLowlight } from '@tiptap/extension-code-block-lowlight'
 // import StarterKit from '@tiptap/starter-kit'
 
 
-  const foo = ref(1);
+  const foo = ref('Hello vue');
 
 
 
 const editor = useEditor({
    
     content: "<p class='bg-red-500'>I'm running Tiptap with Vue.js. 🎉</p>",
-    extensions: [ TiptapStarterKit, Color, TextStyle],
+    extensions: [ TiptapStarterKit, Color, TextStyle,CodeBlock,CodeBlockLowlight],
 
     onUpdate: ({ editor }) => {
     const json = editor.getJSON()

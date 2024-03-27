@@ -90,6 +90,7 @@
           alt=""
         />
       </div> -->
+      
       <div>
         <img
           class="h-[500px] border-gray-200 border-[20px] w-full rounded-md"
@@ -97,6 +98,7 @@
           alt=""
         />
       </div>
+
       <div class="my-10">
         <h1 class="text-2xl font-bold mb-5">Penutup</h1>
         <p class="text-justify">
