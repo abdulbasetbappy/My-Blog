@@ -14,11 +14,11 @@
     </div>
     <!-- layouts -->
     <div class="w-full flex-wrap flex justify-between">
-      <div class="min-h-screen pt-20 bg-[#111827] w-full md:w-1/6">
+      <div class="min-h-screen pt-20 bg-[#999ba1] w-full md:w-1/6">
         <!-- Content for the left sidebar -->
         <ForntendLeftSidebar />
       </div>
-      <div class="w-full md:w-4/6">
+      <div class="w-full md:w-4/6 px-5">
         <!-- Content for the main area -->
         <slot />
       </div>

@@ -17,6 +17,10 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+definePageMeta({
+  layout: "forntend",
+});
+</script>
 
 <style lang="scss" scoped></style>
