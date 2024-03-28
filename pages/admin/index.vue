@@ -1,12 +1,10 @@
-
-
 <template>
   <div>
     <!-- breadcrumb -->
     <nav class="text-sm font-semibold mb-6" aria-label="Breadcrumb">
       <ol class="list-none p-0 inline-flex">
         <li class="flex items-center text-blue-500">
-          <a href="#" class="text-gray-700">Home</a>
+          <nuxtLink to="/admin" class="text-gray-700">Admin</nuxtLink>
           <svg
             class="fill-current w-3 h-3 mx-3"
             xmlns="http://www.w3.org/2000/svg"
@@ -18,7 +16,7 @@
           </svg>
         </li>
         <li class="flex items-center">
-          <a href="#" class="text-gray-600">Dashboard</a>
+          <nuxtLink to="/admin" class="text-gray-600">Dashboard</nuxtLink>
         </li>
       </ol>
     </nav>
@@ -176,6 +174,8 @@
 </template>
 
 
-<script>
-
+<script setup lang="ts">
+definePageMeta({
+  layout: 'admin'
+})
 </script>
