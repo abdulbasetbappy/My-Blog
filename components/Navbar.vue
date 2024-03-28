@@ -1,5 +1,6 @@
 <template>
   <Menubar
+    
     :model="items"
     :pt="{
       root: { class: 'bg-[#1fb9ad]' },
