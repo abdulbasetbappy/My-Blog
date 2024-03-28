@@ -30,7 +30,6 @@
       <NuxtLink
         to="/frontendleft/python"
         class="cursor-pointer flex items-center gap-x-3 text-xl font-semibold"
-        :class="[$route.name === 'admin' ? activeClass : inactiveClass]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -78,7 +77,6 @@
       <NuxtLink
         to="/frontendleft/css"
         class="cursor-pointer flex items-center gap-x-3 text-xl font-semibold"
-        :class="[$route.name === 'admin' ? activeClass : inactiveClass]"
         ><svg
           xmlns="http://www.w3.org/2000/svg"
           width="1em"
@@ -96,7 +94,6 @@
       <NuxtLink
         to="/frontendleft/server"
         class="cursor-pointer flex items-center gap-x-3 text-xl font-semibold"
-        :class="[$route.name === 'admin' ? activeClass : inactiveClass]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
