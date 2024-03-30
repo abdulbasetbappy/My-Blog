@@ -5,82 +5,31 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="container mx-auto">
-    <div class="w-full">
-      <!-- Feature image -->
-      <div class="mb-10">
-        <Card>
-          <template #header>
-            <img
-              class="w-full"
-              alt="user header"
-              src="https://primefaces.org/cdn/primevue/images/usercard.png"
-            />
-          </template>
-          <template>in Label</template>
-          <template #title>Ini Adalah Judul Artikel</template>
-          <template #subtitle>By Ridho Satriawan</template>
-        </Card>
-        <Card class="bg-[#1fb9ad] flex my-10 justify-between">
-          <template #content>
-            <div class="flex justify-between">
-              <h1 class="text-2xl">Postingan Teraru</h1>
-              <p class="m-0 underline">Lebih Banyak</p>
-            </div>
-          </template>
-        </Card>
+  <div class="container mx-auto md:my-36">
+    <div>
+      <div class="relative flex justify-center items-center">
+        <!-- Image -->
+        <img
+          class="rounded-lg h-[300px] md:h-[500px]"
+          src="../assets/banner.jpg"
+        />
+        <!-- Overlay -->
+        <div
+          class="absolute top-0 left-0 w-full h-full rounded-lg bg-primary opacity-60"
+        ></div>
+        <!-- Content -->
+        <div class="absolute md:top-[50%] left-0 text-start p-5">
+          <h1 class="text-sm md:text-lg text-black">In Label</h1>
+          <h1 class="text-xl md:text-4xl text-black font-bold py-1 md:py-2">
+            Ini Adalah Judul Artikel
+          </h1>
+          <p class="text-sm md:text-lg text-black">
+            <span class="font-bold">By</span> Ridho Satriawan
+          </p>
+        </div>
       </div>
-    </div>
-
-    <!-- 2nd part -->
-
-    <div
-      class="grid grid-cols-1 md:grid-cols-2 gap-y-10 justify-center items-center gap-x-10 my-10"
-    >
-      <!-- 1st Post image -->
-      <div>
-        <Card>
-          <template #header>
-            <img
-              alt="user header"
-              src="https://primefaces.org/cdn/primevue/images/usercard.png"
-            />
-          </template>
-          <template>in Label</template>
-          <template #title>Advanced Card</template>
-          <template #subtitle>Card subtitle</template>
-          <template #content>
-            <p class="m-0">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Inventore sed consequuntur error repudiandae numquam deserunt
-              quisquam repellat libero asperiores earum nam nobis, culpa ratione
-              quam perferendis esse, cupiditate neque quas!
-            </p>
-          </template>
-        </Card>
-      </div>
-      <!-- 2nd Post image -->
-      <div>
-        <Card>
-          <template #header>
-            <img
-              alt="user header"
-              src="https://primefaces.org/cdn/primevue/images/usercard.png"
-            />
-          </template>
-          <template>in Label</template>
-          <template #title>Advanced Card</template>
-          <template #subtitle>Card subtitle</template>
-          <template #content>
-            <p class="m-0">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Inventore sed consequuntur error repudiandae numquam deserunt
-              quisquam repellat libero asperiores earum nam nobis, culpa ratione
-              quam perferendis esse, cupiditate neque quas!
-            </p>
-          </template>
-        </Card>
-      </div>
+      <!-- post -->
+      <Posts />
     </div>
   </div>
 </template>

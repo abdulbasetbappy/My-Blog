@@ -17,4 +17,29 @@ export default defineNuxtConfig({
       "postcss-custom-properties": false,
     },
   },
+  tailwindcss: {
+    config: {
+      content: ["presets/**/*.{js,vue,ts}"],
+      theme: {
+        extend: {
+          colors: {
+            primary: "#1fb9ad",
+            seocundary: "#7091B7",
+            dark: "#252932",
+            medium: "#293245",
+          },
+          screens: {
+            tablet: "640px",
+            // => @media (min-width: 640px) { ... }
+
+            laptop: "1024px",
+            // => @media (min-width: 1024px) { ... }
+
+            desktop: "1280px",
+            // => @media (min-width: 1280px) { ... }
+          },
+        },
+      },
+    },
+  },
 });

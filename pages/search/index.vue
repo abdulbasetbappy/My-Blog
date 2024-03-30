@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>this is Pemrograman</h1>
+    <h1>Search</h1>
   </div>
 </template>
 
@@ -10,4 +10,4 @@ definePageMeta({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped></style>
