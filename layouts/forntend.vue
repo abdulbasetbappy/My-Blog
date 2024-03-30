@@ -8,9 +8,8 @@
       <!-- Content for the main area -->
       <slot />
     </div>
-    <div class="min-h-screen px-5 pt-20 bg-gray-100 w-full md:w-1/4">
+    <div class="min-h-screen px-5 bg-gray-100 w-full md:w-1/4">
       <!-- Content for the right sidebar -->
-      <h1 class="text-2xl text-primary font-bold my-10">showing added</h1>
       <SideCard />
     </div>
   </div>
