@@ -13,7 +13,9 @@
       <SideCard />
     </div>
   </div>
-  <div class="footer border-t border-gray-300 bg-primary p-2 w-full">
-    footer
+  <div
+    class="footer border-t text-center border-gray-300 bg-primary text-white font-normal p-2 w-full"
+  >
+    Copyright@KangTutor
   </div>
 </template>
