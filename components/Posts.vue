@@ -9,8 +9,8 @@ const posts = [
     user: "Ridho Satriawan",
     description:
       "Apa itu HTML? Buat Kamu yang pernah membuat sebuah website pastinya sudah tidak asing lagi dengan yang namaya HTML.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illum aperiam in quisquam quos saepe iusto adipisci autem repellendus eius",
-    datePost: "22 Agustus 2024",
-    view: "31",
+    datePost: "31 Agustus 2024",
+    view: "22",
   },
   {
     id: 2,
@@ -20,8 +20,8 @@ const posts = [
     user: "Ridho Satriawan",
     description:
       "Apa itu HTML? Buat Kamu yang pernah membuat sebuah website pastinya sudah tidak asing lagi dengan yang namaya HTML.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illum aperiam in quisquam quos saepe iusto adipisci autem repellendus eius",
-    datePost: "22 Agustus 2024",
-    view: "31",
+    datePost: "31 Agustus 2024",
+    view: "332",
   },
   {
     id: 3,
@@ -31,8 +31,8 @@ const posts = [
     user: "Ridho Satriawan",
     description:
       "Apa itu HTML? Buat Kamu yang pernah membuat sebuah website pastinya sudah tidak asing lagi dengan yang namaya HTML.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illum aperiam in quisquam quos saepe iusto adipisci autem repellendus eius",
-    datePost: "22 Agustus 2024",
-    view: "31",
+    datePost: "31 Agustus 2024",
+    view: "12",
   },
   {
     id: 4,
@@ -42,8 +42,8 @@ const posts = [
     user: "Ridho Satriawan",
     description:
       "Apa itu HTML? Buat Kamu yang pernah membuat sebuah website pastinya sudah tidak asing lagi dengan yang namaya HTML.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illum aperiam in quisquam quos saepe iusto adipisci autem repellendus eius",
-    datePost: "22 Agustus 2024",
-    view: "31",
+    datePost: "31 Agustus 2024",
+    view: "341",
   },
   {
     id: 5,
@@ -53,8 +53,8 @@ const posts = [
     user: "Ridho Satriawan",
     description:
       "Apa itu HTML? Buat Kamu yang pernah membuat sebuah website pastinya sudah tidak asing lagi dengan yang namaya HTML.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illum aperiam in quisquam quos saepe iusto adipisci autem repellendus eius",
-    datePost: "22 Agustus 2024",
-    view: "31",
+    datePost: "31 Agustus 2024",
+    view: "531",
   },
   {
     id: 6,
@@ -64,8 +64,8 @@ const posts = [
     user: "Ridho Satriawan",
     description:
       "Apa itu HTML? Buat Kamu yang pernah membuat sebuah website pastinya sudah tidak asing lagi dengan yang namaya HTML.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illum aperiam in quisquam quos saepe iusto adipisci autem repellendus eius",
-    datePost: "22 Agustus 2024",
-    view: "31",
+    datePost: "31 Agustus 2024",
+    view: "316",
   },
 ];
 

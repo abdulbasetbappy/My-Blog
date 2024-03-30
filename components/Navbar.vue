@@ -42,7 +42,7 @@ function toggleMobileMenu() {
     <!-- Navigation Bar -->
     <div class="bg-primary w-full px-5 fixed top-0">
       <div class="py-5 flex justify-between items-center">
-        <div class="flex items-center justify-between w-full md:w-4/5 mx-auto">
+        <div class="flex items-center justify-between w-full md:w-4/6 mx-auto">
           <!-- Logo -->
           <div class="font-bold text-xl text-white">Blogs</div>
           <!-- Navigation links (hidden on small devices) -->

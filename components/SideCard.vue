@@ -1,6 +1,6 @@
 <template>
   <!-- Right Side -->
-
+  <img class="w-full mb-5 md:mb-10" src="../assets/right.png" alt="" />
   <div class="bg-[#1fb9ad] text-white p-2 rounded-lg">
     <h1 class="text-center text-2xl font-semibold">Paling Popular</h1>
   </div>
