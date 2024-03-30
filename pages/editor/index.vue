@@ -186,7 +186,7 @@ const textColorChangeFunction = () => {
 };
 </script>
 
-<style>
+<style scoped>
 /* Basic editor styles */
 
 code {
