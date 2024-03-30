@@ -1,3 +1,24 @@
+<script setup>
+    import { ref } from 'vue';
+    
+    import MultiSelect from 'primevue/multiselect';
+
+
+    definePageMeta({
+        layout: "admin",
+    });
+
+    const selectedCities = ref();
+    const cities = ref([
+        { name: 'New York', code: 'NY' },
+        { name: 'Rome', code: 'RM' },
+        { name: 'London', code: 'LDN' },
+        { name: 'Istanbul', code: 'IST' },
+        { name: 'Paris', code: 'PRS' }
+    ]);
+
+</script>
+
 <template>
     <div>
       <!-- breadcrumb -->
@@ -24,6 +45,17 @@
   
       <!-- Page Title -->
       <h3 class="text-3xl font-medium text-gray-700">Create Post</h3>
+      <!--Multi Select-->
+
+
+    <div class="card flex justify-content-center">
+        <MultiSelect v-model="selectedCities" display="chip" :options="cities" optionLabel="name" placeholder="Select Cities"
+            :maxSelectedLabels="3" class="w-full md:w-20rem" />
+    </div>
+
+
+
+
       <!--Preview Button-->
       <div class="flex justify-end my-4">
         <button
@@ -58,11 +90,6 @@
     </div>
   </template>
   
-  <script setup lang="ts">
-  import TipTapEditor from "../../editor/index.vue";
-  definePageMeta({
-    layout: "admin",
-  });
-  </script>
+
   <style scoped></style>
   

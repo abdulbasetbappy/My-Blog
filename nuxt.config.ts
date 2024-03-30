@@ -6,6 +6,7 @@ export default defineNuxtConfig({
     "nuxt-primevue",
     "nuxt-icon",
     "nuxt-tiptap-editor",
+    "@nuxtjs/mdc"
   ],
   tiptap: {
     prefix: "Tiptap", //prefix for Tiptap imports, composables not included
