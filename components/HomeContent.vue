@@ -6,14 +6,10 @@ definePageMeta({
 
 <template>
   <div class="container">
-    
     <div>
       <div class="relative flex justify-center items-center">
         <!-- Image -->
-        <img
-          class="rounded-lg"
-          src="../assets/banner.jpg"
-        />
+        <img class="rounded-lg w-full" src="../assets/banner.jpg" />
         <!-- Overlay -->
         <div
           class="absolute top-0 left-0 w-full h-full rounded-lg bg-primary opacity-60"

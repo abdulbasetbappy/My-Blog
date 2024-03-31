@@ -78,7 +78,7 @@ const truncateDescription = (description) => {
 };
 </script>
 <template>
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-20">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-16">
     <div
       v-for="post in posts"
       :key="post.id"
@@ -102,7 +102,7 @@ const truncateDescription = (description) => {
             >See more
           </NuxtLink>
         </p>
-        <div class="flex items-center justify-between mt-5 mb-8">
+        <div class="flex items-center justify-between my-5">
           <div class="flex items-center">
             <Icon name="system-uicons:calendar-date"></Icon>
             <p class="text-gray-600 text-sm ml-2">{{ post.datePost }}</p>
