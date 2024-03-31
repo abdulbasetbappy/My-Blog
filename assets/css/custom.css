@@ -1,0 +1,56 @@
+pre {
+    padding: 1em 0 !important;
+    --tw-prose-pre-bg: #8881 !important;
+    background: #e1dcdc24;
+}
+.line {
+    display: block;
+    padding: 0 1rem;
+}
+.line.highlight {
+    width: 100%;
+    background-color: #8881 !important;
+}
+.line.diff.remove {
+    background-color: rgba(194, 58, 58, 0.3) !important;
+}
+.line.diff.add {
+    background-color: rgba(46, 141, 46, 0.3) !important;
+}
+.line.diff.remove::before {
+    content: '-';
+    color: #c23a3a;
+    position: absolute;
+}
+.line.diff.add::before {
+    content: '+';
+    color: #23b73c;
+    position: absolute;
+}
+
+h1 { font-size: 34px; font-weight: 2.125rem; }
+
+h2 { font-size: 30px; font-weight: 1.875rem; }
+
+h3 { font-size: 24px; font-weight: 1.5rem; }
+
+h4 { font-size: 20px; font-weight: 1.25rem; }
+
+@media only screen and (max-width: 600px) {
+
+    h1 { font-size: 24px; font-weight: 1.5rem; }
+    
+    h2, h3, h4 { font-size: 18px; font-weight: 1.25rem; }
+}
+
+.view_container ul {
+    margin: 15px !important;
+}
+
+.view_container ol {
+    margin: 15px !important;
+    list-style: decimal;
+    padding: 15px;
+
+}
+

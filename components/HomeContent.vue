@@ -5,15 +5,13 @@ definePageMeta({
 </script>
 
 <template>
-  <div class="container mx-auto my-16 md:my-36">
-    <div>
-      <img class="w-full mb-5 md:mb-10" src="../assets/top.png" alt="" />
-    </div>
+  <div class="container">
+    
     <div>
       <div class="relative flex justify-center items-center">
         <!-- Image -->
         <img
-          class="rounded-lg h-[300px] md:h-[500px]"
+          class="rounded-lg"
           src="../assets/banner.jpg"
         />
         <!-- Overlay -->

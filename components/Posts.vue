@@ -98,7 +98,7 @@ const truncateDescription = (description) => {
         <span class="font-bold text-gray-500">By</span> {{ post.user }}
         <p class="text-gray-700 mt-2">
           {{ truncateDescription(post.description) }}
-          <NuxtLink to="/blogDetails" class="text-primary cursor-pointer"
+          <NuxtLink to="/blogs/Details" class="text-primary cursor-pointer"
             >See more
           </NuxtLink>
         </p>
@@ -106,8 +106,7 @@ const truncateDescription = (description) => {
           <div class="flex items-center">
             <Icon name="system-uicons:calendar-date"></Icon>
             <p class="text-gray-600 text-sm ml-2">{{ post.datePost }}</p>
-          </div>
-          <div class="flex items-center">
+            <span class="mx-1">|</span>
             <Icon name="lets-icons:view-fill"></Icon>
             <p class="text-gray-600 text-sm ml-2">{{ post.view }}</p>
           </div>

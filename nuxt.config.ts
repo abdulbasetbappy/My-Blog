@@ -6,11 +6,37 @@ export default defineNuxtConfig({
     "nuxt-primevue",
     "nuxt-icon",
     "nuxt-tiptap-editor",
+    '@nuxtjs/mdc'
   ],
   tiptap: {
     prefix: "Tiptap", //prefix for Tiptap imports, composables not included
   },
-  css: ["primevue/resources/themes/aura-light-green/theme.css"],
+  css: [
+    "primevue/resources/themes/aura-light-green/theme.css",
+    '@/assets/css/custom.css',
+
+  ],
+
+  mdc: {
+    highlight: {
+        theme: {
+            default: 'vitesse-light',
+            dark: 'material-theme-palenight',
+        },
+        preload: [
+            'sql'
+        ]
+    },
+    remarkPlugins: {
+        'remark-mdc': {
+            options: {
+            experimental: {
+                autoUnwrap: true
+            }
+            }
+        }
+    }
+  },
 
   postcss: {
     plugins: {

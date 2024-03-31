@@ -32,7 +32,7 @@ definePageMeta({
               reiciendis delectus id voluptate? Cumque quam consequuntur amet
               atque a dolore laboriosam.<span
                 class="text-green-500 cursor-pointer"
-                ><NuxtLink to="/blogDetails">...See more</NuxtLink></span
+                ><NuxtLink to="/blog/Details">...See more</NuxtLink></span
               >
             </p>
           </div>
