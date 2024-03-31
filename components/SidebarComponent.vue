@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import {ref} from "vue";
 import { useSidebar } from "../composables/useSdiebar";
 
 const { isOpen } = useSidebar();

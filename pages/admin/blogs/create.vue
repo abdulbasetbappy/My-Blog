@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import TipTapEditor from "../../editor/index";
+import TipTapEditor from "../../editor/index.vue";
 definePageMeta({
   layout: "admin",
 });
