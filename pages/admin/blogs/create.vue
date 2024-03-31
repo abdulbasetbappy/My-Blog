@@ -14,7 +14,7 @@ definePageMeta({
           <nuxtLink to="/admin" class="text-gray-700">Admin</nuxtLink>
           <Icon name="uil:arrow-right" />
         </li>
-        <li class="flex items-center">
+        <li class="flex items-center text-blue-500">
           <nuxtLink to="/Admin/Blogs" class="text-gray-600">Blogs</nuxtLink>
           <Icon name="uil:arrow-right" />
         </li>
@@ -30,25 +30,6 @@ definePageMeta({
     <!-- Page Title -->
     <h3 class="text-3xl font-medium text-gray-700">Add New Post</h3>
     <!--Multi Select-->
-
-    <!--Preview Button-->
-    <div class="flex gap-4 justify-end my-4">
-      <button
-        class="flex items-center justify-center px-3 py-2 bg-teal-600 font-medium tracking-wider text-white transition-colors duration-200 transform rounded-md hover:bg-teal-500 focus:outline-none focus:bg-teal-500"
-      >
-        <Icon name="material-symbols:publish-rounded" class="h-6 w-6" />
-        <span class="ml-2">Publish Now</span>
-      </button>
-      <button
-        class="flex items-center justify-center px-3 py-2 bg-teal-600 font-medium tracking-wider text-white transition-colors duration-200 transform rounded-md hover:bg-teal-500 focus:outline-none focus:bg-teal-500"
-      >
-        <Icon
-          name="material-symbols:visibility-outline-rounded"
-          class="h-6 w-6"
-        />
-        <span class="ml-2">Preview</span>
-      </button>
-    </div>
     <!-- Editor-->
     <TipTapEditor />
   </div>
