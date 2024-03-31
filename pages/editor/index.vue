@@ -66,14 +66,10 @@ const editor = useEditor({
             v-model="payload.title"
           />
         </div>
-        <div class="flex justify-start items-center mb-3 flex-row">
-          <!--Image Upload-->
-          <div class="w-[40%]">
-            <p class="text-xl font-medium">Upload Image</p>
-            <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="image/*" :maxFileSize="1000000" @upload="onUpload" :auto="true" chooseLabel="Browse" />
-          </div>
+        <div class="flex mb-3 w-full">
+          
           <!--Category Selection-->
-          <div class="w-[35%]">
+          <div class="w-2/4 ">
             <p class="text-xl font-medium">Category</p>
               <MultiSelect
                 v-model="payload.category"
@@ -86,11 +82,17 @@ const editor = useEditor({
               />
     
           </div>
+          <!--Image Upload-->
+          <div class="w-1/4 mx-2">
+                <p class="text-xl font-medium">Upload Image</p>
+                <FileUpload mode="basic" class="w-full" name="demo[]" url="/api/upload" accept="image/*" :maxFileSize="1000000" @upload="onUpload" :auto="true" chooseLabel="Browse" />
+            </div>
           <!--Status Selection-->
-          <div class="w-[25%]">
-            <p class="text-xl font-medium">Status</p>
-            <Dropdown v-model="payload.status" :options="statusOptions" optionLabel="name" placeholder="Select Status" class="w-full md:w-[14rem]" />
-          </div>
+            <div class="w-1/4">
+                <p class="text-xl font-medium">Status</p>
+                <Dropdown v-model="payload.status" :options="statusOptions" optionLabel="name" placeholder="Select Status" class="w-full" />
+            </div>
+            
         </div>
 
       </div>
