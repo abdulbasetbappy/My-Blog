@@ -5,18 +5,15 @@
       <ol class="list-none p-0 inline-flex">
         <li class="flex items-center text-blue-500">
           <nuxtLink to="/admin" class="text-gray-700">Admin</nuxtLink>
-          <svg
-            class="fill-current w-3 h-3 mx-3"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 320 512"
-          >
-            <path
-              d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
-            />
-          </svg>
+          <Icon name="uil:arrow-right"/>
         </li>
+
         <li class="flex items-center">
-          <nuxtLink to="/Admin/Category" class="text-gray-600">Category</nuxtLink>
+          <nuxtLink to="/Admin/Blogs" class="text-gray-700">Blogs</nuxtLink>
+        </li>
+                <li class="flex items-center text-blue-500">         <Icon name="uil:arrow-right"/>
+          <nuxtLink to="/admin/blogs/category" class="text-gray-700">Category</nuxtLink>
+ 
         </li>
       </ol>
     </nav>
@@ -144,9 +141,9 @@
       <!-- Add Category Button -->
       <div>
         <!-- Add Category Modal Button -->
-        <button
+        <NuxtLink
           class="flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-teal-600 rounded-md hover:bg-teal-500 focus:outline-none focus:bg-teal-500"
-          @click="modalOpen"
+          to="/Admin/Category/create"
         >
           <svg
             class="w-5 h-5"
@@ -176,9 +173,7 @@
             </g>
           </svg>
           <span class="pl-2">Create Category</span>
-        </button>
-        <!-- Add Category Modal Content -->
-        <CreateCategoryModal :isOpen="isOpenPopup" :closeModal="modalClose" />
+        </NuxtLink>
       </div>
       <!-- Add Category Modal End -->
 
@@ -213,14 +208,6 @@
 definePageMeta({
   layout: "admin",
 });
-//Popup
-const isOpenPopup = ref(false);
-const modalOpen = () => {
-  isOpenPopup.value = true;
-};
-const modalClose = () => {
-  isOpenPopup.value = false;
-};
 //refresh page
 const refreshPage = () => {
   location.reload();

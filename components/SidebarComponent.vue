@@ -27,39 +27,23 @@ const nodes = ref([
     children: [
       {
         key: "201",
-        label: "Create",
+        label: "All Blogs",
+        icon: "",
+        data: "/Admin/Blogs/All-Blogs",
+        type: "url",
+      },
+      {
+        key: "201",
+        label: "Add New",
         icon: "",
         data: "/Admin/Blogs/Create",
         type: "url",
       },
       {
         key: "202",
-        label: "Update",
+        label: "Category",
         icon: "",
-        data: "/Admin/Blogs/Update",
-        type: "url",
-      },
-    ],
-  },
-  {
-    key: "03",
-    label: "Category",
-    data: "/Admin/Category",
-    type: "url",
-    icon: "",
-    children: [
-      {
-        key: "301",
-        label: "Create",
-        icon: "",
-        data: "/Admin/Category/Create",
-        type: "url",
-      },
-      {
-        key: "302",
-        label: "Update",
-        icon: "",
-        data: "/Admin/Category/Update",
+        data: "/Admin/Blogs/Category",
         type: "url",
       },
     ],
@@ -73,16 +57,9 @@ const nodes = ref([
     children: [
       {
         key: "401",
-        label: "Create",
+        label: "Add New",
         icon: "",
         data: "/Admin/Users/Create",
-        type: "url",
-      },
-      {
-        key: "402",
-        label: "Update",
-        icon: "",
-        data: "/Admin/Users/Update",
         type: "url",
       },
     ],
