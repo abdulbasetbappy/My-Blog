@@ -1,13 +1,39 @@
 <script setup>
+import bannar from "../assets/banner.jpg";
 definePageMeta({
   layout: "forntend",
 });
+
+const newpost = [
+  {
+    id: 6,
+    img: bannar,
+    label: "In Label",
+    title: "Ini Adalah Judul Artikel",
+    user: "Ridho Satriawan",
+    description:
+      "Apa itu HTML? Buat Kamu yang pernah membuat sebuah website pastinya sudah tidak asing lagi dengan yang namaya HTML.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illum aperiam in quisquam quos saepe iusto adipisci autem repellendus eius",
+    datePost: "31 Agustus 2024",
+    view: "316",
+  },
+];
+// Only show 100 letters in description
+const truncateDescription = (description) => {
+  if (description.length > 20) {
+    return description.slice(0, 20) + "...";
+  }
+  return description;
+};
 </script>
 
 <template>
   <div class="container">
     <div>
-      <div class="relative flex justify-center items-center">
+      <div
+        class="relative flex justify-center items-center"
+        v-for="post in newpost"
+        :key="post.id"
+      >
         <!-- Image -->
         <img class="rounded-lg w-full" src="../assets/banner.jpg" />
         <!-- Overlay -->
@@ -15,14 +41,29 @@ definePageMeta({
           class="absolute top-0 left-0 w-full h-full rounded-lg bg-primary opacity-60"
         ></div>
         <!-- Content -->
-        <div class="absolute top-[50%] md:top-[60%] md:left-10 text-start p-5">
-          <h1 class="text-sm md:text-lg text-black">In Label</h1>
-          <h1 class="text-xl md:text-4xl text-black font-bold py-1 md:py-2">
-            Ini Adalah Judul Artikel
-          </h1>
-          <p class="text-sm md:text-lg text-black">
-            <span class="font-bold">By</span> Ridho Satriawan
+        <div
+          class="absolute md:top-[40%] md:left-10 text-start w-full md:w-1/2 p-5"
+        >
+          <span class="text-black text-sm">{{ post.label }}</span>
+          <h2 class="text-sm md:text-xl font-bold md:mt-2">{{ post.title }}</h2>
+          <span class="font-bold text-gray-500">By</span> {{ post.user }}
+          <p class="text-black text-sm md:mt-2">
+            {{ truncateDescription(post.description) }}
+            <NuxtLink
+              to="/blogs/Details"
+              class="text-black font-bold cursor-pointer"
+              >See more
+            </NuxtLink>
           </p>
+          <div class="flex items-center justify-between md:my-5">
+            <div class="flex items-center">
+              <Icon name="system-uicons:calendar-date"></Icon>
+              <p class="text-black text-sm ml-2">{{ post.datePost }}</p>
+              <span class="mx-1">|</span>
+              <Icon name="lets-icons:view-fill"></Icon>
+              <p class="text-black text-sm ml-2">{{ post.view }}</p>
+            </div>
+          </div>
         </div>
       </div>
       <!-- post -->

@@ -1,6 +1,6 @@
 <template>
-  <div class="mt-20">
-    <h1>this is Teknologi</h1>
+  <div>
+    <h1>this is Contact</h1>
   </div>
 </template>
 

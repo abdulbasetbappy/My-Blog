@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>this is Pemrograman</h1>
+    <h1>this is Login</h1>
   </div>
 </template>
 

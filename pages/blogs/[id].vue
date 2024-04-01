@@ -1,10 +1,9 @@
-  
-  <script setup>
-  definePageMeta({
-    layout: "forntend",
-  });
+<script setup>
+definePageMeta({
+  layout: "forntend",
+});
 
-  const md = ref(
+const md = ref(
   `---
   title: Sam
   ---
@@ -44,27 +43,18 @@
   }
   \`\`\`
   <iframe src="https://www.youtube.com/watch?v=3lTUAWOgoHs"></iframe>
-  `)
-  
-  </script>
+  `
+);
+</script>
 
 <template>
-    <div class="grid grid-cols-2 view_container min-h-full">
-        <textarea
-            v-model="md"
-            class="w-full p-4"
-        />
-        <MDC v-slot="{ data, body }" :value="md">
-            <MDCRenderer v-if="body"
-                :body="body"
-                :data="data"
-                :prose="true"
-            />
-        </MDC>
-        <div data-youtube-video>
-          <iframe src="https://www.youtube.com/watch?v=3lTUAWOgoHs"></iframe>
-        </div>
+  <div class="grid grid-cols-2 view_container min-h-full">
+    <textarea v-model="md" class="w-full p-4" />
+    <MDC v-slot="{ data, body }" :value="md">
+      <MDCRenderer v-if="body" :body="body" :data="data" :prose="true" />
+    </MDC>
+    <div data-youtube-video>
+      <iframe src="https://www.youtube.com/watch?v=3lTUAWOgoHs"></iframe>
     </div>
-  </template>
-
-  
+  </div>
+</template>

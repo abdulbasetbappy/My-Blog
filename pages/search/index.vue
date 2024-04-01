@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mt-36">
+  <div class="relative">
     <input
       type="text"
       v-model="searchTerm"

@@ -4,24 +4,24 @@ import { useRoute } from "vue-router";
 
 const items = ref([
   {
-    label: "Beranda",
+    label: "Home",
     command: "home",
     url: "/",
   },
   {
-    label: "Tutorial",
-    command: "tutorial",
-    url: "/tutorial",
+    label: "About US",
+    command: "about",
+    url: "/about",
   },
   {
-    label: "Pemrograman",
-    command: "pemrograman",
-    url: "/pemrograman",
+    label: "Contact",
+    command: "contact",
+    url: "/contact",
   },
   {
-    label: "Teknologi",
-    command: "teknologi",
-    url: "/teknologi",
+    label: "Login/Register",
+    command: "register",
+    url: "/register",
   },
 ]);
 
