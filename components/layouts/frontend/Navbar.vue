@@ -19,9 +19,9 @@ const items = ref([
     url: "/contact",
   },
   {
-    label: "Login/Register",
-    command: "register",
-    url: "/register",
+    label: "Signup/Register",
+    command: "signup",
+    url: "/signup",
   },
 ]);
 
