@@ -10,32 +10,23 @@ definePageMeta({
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-10">
         <!-- card 2 -->
-        <div
-          class="rounded overflow-hidden shadow-lg mx-auto flex flex-col h-full bg-white col-span-full"
-        >
-          <img
-            src="../../assets/buttom.jpg"
-            alt="product thumb"
-            class="w-full h-full"
-          />
+        <div class="rounded overflow-hidden shadow-lg mx-auto flex flex-col h-full bg-white col-span-full">
+            <img src="../../assets/buttom.jpg" alt="product thumb" class="w-full h-full"/>
 
-          <div class="px-6 py-4 flex-grow">
-            <div class="flex flex-row">
-              <p class="font-bold text-xl mb-2">This is a title</p>
+            <div class="px-6 py-4 flex-grow">
+                <div class="flex flex-row">
+                    <p class="font-bold text-xl mb-2">This is a title</p>
+                </div>
 
-              <div></div>
+                <p> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti
+                molestias, veniam officiis et, quaerat, nam non obcaecati facilis
+                reiciendis delectus id voluptate? Cumque quam consequuntur amet
+                atque a dolore laboriosam. </p>
+                <span class="text-green-500 cursor-pointer" >
+                    <NuxtLink to="/blog/Details">...See more</NuxtLink>
+                </span>
+                
             </div>
-
-            <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corrupti
-              molestias, veniam officiis et, quaerat, nam non obcaecati facilis
-              reiciendis delectus id voluptate? Cumque quam consequuntur amet
-              atque a dolore laboriosam.<span
-                class="text-green-500 cursor-pointer"
-                ><NuxtLink to="/blog/Details">...See more</NuxtLink></span
-              >
-            </p>
-          </div>
         </div>
         <!-- card 3 -->
         <div
