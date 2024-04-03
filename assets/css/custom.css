@@ -54,3 +54,8 @@ h4 { font-size: 20px; font-weight: 1.25rem; }
 
 }
 
+.tiptap ::marker {
+    margin: 0;
+    padding: 0;
+    color: #23b73c;
+}

@@ -30,10 +30,6 @@ const payload = reactive({
   category: "",
   status:"",
 });
-const submitForm = () => {
-  console.log("Form submitted");
-  console.log("Payload:", payload);
-};
 </script>
 
 <template>
