@@ -14,13 +14,10 @@
     </nav>
     <!-- breadcrumb end -->
 
-    <test/>
-
     </div>
 </template>
 
 <script setup lang="ts">
-import test from '../../editor/test.vue'
 definePageMeta({
   layout: 'admin'
 })

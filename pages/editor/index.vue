@@ -36,7 +36,15 @@ const editor = useEditor({
     TaskItem,
     TaskList,
     Link,
-    Youtube,
+    Youtube.configure({
+      width: 480,
+      height: 320,
+      inline: false,
+      controls: false,
+      autoplay: true,
+      loop: 'true',
+      progressBarColor: 'white',
+    }),
     FontFamily,
   ],
   editorProps: {
@@ -50,10 +58,46 @@ const editor = useEditor({
   },
 });
 
+//setLink
 const setLink = () => {
-  const url = window.prompt("Enter the URL");
-  editor.chain().focus().setLink({ href: url }).run();
+  const previousUrl = editor.value.getAttributes("link").href;
+  const url = window.prompt("URL", previousUrl);
+
+  // cancelled
+  if (url === null) {
+    return;
+  }
+
+  // empty
+  if (url === "") {
+    editor.value.chain().focus().extendMarkRange("link").unsetLink().run();
+
+    return;
+  }
+
+  // update link
+  editor.value
+    .chain()
+    .focus()
+    .extendMarkRange("link")
+    .setLink({ href: url })
+    .run();
 };
+//Youtube video
+const addVideo = () => {
+  const url = prompt('Enter YouTube URL');
+
+  editor.value.commands.setYoutubeVideo({
+    src: url,
+    width: 640, // Default width
+    height: 480, // Default height
+  });
+};
+onBeforeUnmount(() => {
+  editor.value.destroy();
+});
+
+
 </script>
 
 <template>
@@ -303,16 +347,8 @@ const setLink = () => {
         <Icon name="material-symbols:link-off-rounded" class="h-6 w-6" />
       </button>
 
-          <button @click="setLink" :class="{ 'is-active': editor.isActive('link') }">
-      setLink
-    </button>
-    <button @click="editor.chain().focus().unsetLink().run()" :disabled="!editor.isActive('link')">
-      unsetLink
-    </button>
       <!--Youtube-->
-      <button
-        @click="addVideo"
-      >
+      <button @click="addVideo">
         <Icon name="tabler:brand-youtube-filled" class="h-6 w-6" />
       </button>
     </div>
