@@ -14,7 +14,10 @@ import TaskList from "@tiptap/extension-task-list";
 import Link from "@tiptap/extension-link";
 import Youtube from "@tiptap/extension-youtube";
 import FontFamily from "@tiptap/extension-font-family";
-
+import Table from "@tiptap/extension-table";
+import TableCell from "@tiptap/extension-table-cell";
+import TableHeader from "@tiptap/extension-table-header";
+import TableRow from "@tiptap/extension-table-row";
 // import StarterKit from '@tiptap/starter-kit'
 
 //TipTap Editor
@@ -42,10 +45,16 @@ const editor = useEditor({
       inline: false,
       controls: false,
       autoplay: true,
-      loop: 'true',
-      progressBarColor: 'white',
+      loop: "true",
+      progressBarColor: "white",
     }),
     FontFamily,
+    Table.configure({
+      resizable: true,
+    }),
+    TableCell,
+    TableHeader,
+    TableRow,
   ],
   editorProps: {
     attributes: {
@@ -85,7 +94,7 @@ const setLink = () => {
 };
 //Youtube video
 const addVideo = () => {
-  const url = prompt('Enter YouTube URL');
+  const url = prompt("Enter YouTube URL");
 
   editor.value.commands.setYoutubeVideo({
     src: url,
@@ -96,8 +105,6 @@ const addVideo = () => {
 onBeforeUnmount(() => {
   editor.value.destroy();
 });
-
-
 </script>
 
 <template>
@@ -379,8 +386,89 @@ onBeforeUnmount(() => {
         <Icon name="material-symbols:redo-rounded" class="h-6 w-6" />
       </button>
     </div>
+    <!--Undo Redo/Break End-->
+
+    <div class="p-2 border border-gray-500 rounded-md flex-wrap flex gap-1">
+      <!--Insert Table-->
+      <button
+        @click="
+          editor
+            .chain()
+            .focus()
+            .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
+            .run()
+        "
+      >
+        <Icon name="tabler:columns" class="h-6 w-6" />
+      </button>
+      <!--Delete Table-->
+      <button @click="editor.chain().focus().deleteTable().run()">
+        <Icon name="tabler:columns-off" class="h-6 w-6 rotate-180" />
+      </button>
+      <!--Add Column Before-->
+      <button @click="editor.chain().focus().addColumnBefore().run()">
+        <Icon name="tabler:column-insert-left" class="h-6 w-6" />
+      </button>
+      <!--Delete Column-->
+      <button @click="editor.chain().focus().deleteColumn().run()">
+        <Icon name="tabler:column-remove" class="h-6 w-6" />
+      </button>
+      <!--Add Column After-->
+      <button @click="editor.chain().focus().addColumnAfter().run()">
+        <Icon name="tabler:column-insert-right" class="h-6 w-6" />
+      </button>
+      <!--Add Row Before-->
+      <button @click="editor.chain().focus().addRowBefore().run()">
+        <Icon name="tabler:column-insert-left" class="h-6 w-6 rotate-90" />
+      </button>
+      <!--Delete Row-->
+      <button @click="editor.chain().focus().deleteRow().run()">
+        <Icon name="tabler:column-remove" class="h-6 w-6 rotate-90" />
+      </button>
+      <!--Add Row After-->
+      <button @click="editor.chain().focus().addRowAfter().run()">
+        <Icon name="tabler:column-insert-right" class="h-6 w-6 rotate-90" />
+      </button>
+
+      <button @click="editor.chain().focus().mergeCells().run()">
+        <Icon name="material-symbols:cell-merge-rounded" class="h-6 w-6" />
+      </button>
+      <button @click="editor.chain().focus().splitCell().run()">
+        <Icon name="mdi:table-split-cell" class="h-6 w-6" />
+      </button>
+      <button @click="editor.chain().focus().toggleHeaderColumn().run()">
+        toggleHeaderColumn
+      </button>
+      <button @click="editor.chain().focus().toggleHeaderRow().run()">
+        toggleHeaderRow
+      </button>
+      <button @click="editor.chain().focus().toggleHeaderCell().run()">
+        toggleHeaderCell
+      </button>
+      <button @click="editor.chain().focus().mergeOrSplit().run()">
+        mergeOrSplit
+      </button>
+      <button
+        @click="editor.chain().focus().setCellAttribute('colspan', 2).run()"
+      >
+        setCellAttribute
+      </button>
+      <button @click="editor.chain().focus().fixTables().run()">
+        fixTables
+      </button>
+      <button @click="editor.chain().focus().goToNextCell().run()">
+        <Icon name="material-symbols:arrow-right-alt" class="h-6 w-6" />
+      </button>
+      <button @click="editor.chain().focus().goToPreviousCell().run()">
+        <Icon name="material-symbols:arrow-right-alt" class="h-6 rotate-180 w-6" />
+      </button>
+    </div>
   </div>
   <TiptapEditorContent :editor="editor" />
+
+  <div>
+    <p>{{ foo }}</p>
+  </div>
 </template>
 
 <style scoped>
