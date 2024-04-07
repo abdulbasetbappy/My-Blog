@@ -1,8 +1,5 @@
 <script setup>
 import bannar from "../assets/banner.jpg";
-definePageMeta({
-  layout: "forntend",
-});
 
 const newpost = [
   {
