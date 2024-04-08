@@ -1,8 +1,5 @@
 <script setup>
 import bannar from "../assets/banner.jpg";
-definePageMeta({
-  layout: "forntend",
-});
 
 const newpost = [
   {
@@ -33,7 +30,7 @@ const handleScroll = () => {
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
   const scrolled = window.scrollY;
   if (Math.ceil(scrolled) === scrollable) {
-    alert("You've reached the bottom!");
+    console.log("You've reached the bottom!");
   }
 };
 </script>
@@ -50,7 +47,7 @@ const handleScroll = () => {
         <img class="rounded-lg w-full" src="../assets/banner.jpg" />
         <!-- Overlay -->
         <div
-          class="absolute top-0 left-0 w-full h-full rounded-lg bg-primary opacity-60"
+          class="absolute top-0 left-0 w-full h-full rounded-lg bg-gray-300 opacity-60"
         ></div>
         <!-- Content -->
         <div
@@ -58,7 +55,7 @@ const handleScroll = () => {
         >
           <span class="text-black text-sm">{{ post.label }}</span>
           <h2 class="text-sm md:text-xl font-bold md:mt-2">{{ post.title }}</h2>
-          <span class="font-bold text-gray-500">By</span> {{ post.user }}
+          <span class="font-bold text-gray-700">By</span> {{ post.user }}
           <p class="text-black text-sm md:mt-2">
             {{ truncateDescription(post.description) }}
             <NuxtLink
