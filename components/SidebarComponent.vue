@@ -40,14 +40,23 @@ const nodes = ref([
         data: "/Admin/Blogs/Create",
         type: "url",
       },
-      {
+    ],
+  },
+  {
         key: "202",
         label: "Category",
         icon: "",
-        data: "/Admin/Blogs/Category",
+        data: "/Admin/Category",
         type: "url",
-      },
-    ],
+        children: [
+          {
+            key: "20202",
+            label: "Add New",
+            icon: "",
+            data: "/Admin/Category/Create",
+            type: "url",
+          },
+        ],
   },
   {
     key: "04",

@@ -54,8 +54,39 @@ h4 { font-size: 20px; font-weight: 1.25rem; }
 
 }
 
+
+/*----TipTap ----*/
 .tiptap ::marker {
     margin: 0;
     padding: 0;
     color: #23b73c;
+}
+/*-----TipTap TaskList------*/
+ul[data-type='taskList'] > li {
+    list-style: none;
+}
+ul[data-type='taskList'] > li > label, ul[data-type='taskList'] > li > div{
+    display: inline-block;
+    margin: 2px;
+}
+/*-----TipTap Table------*/
+.tableWrapper{
+    overflow-x: auto;
+    border: 1px solid #00000024;
+    padding: 5px;
+}
+.tableWrapper table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.tableWrapper table th {
+    border: 1px solid #00000024;
+    padding: 8px;
+    text-align: left;
+    background-color: #f2f2f2;
+}
+.tableWrapper table td {
+    border: 1px solid #00000024;
+    padding: 8px;
+    text-align: left;
 }
