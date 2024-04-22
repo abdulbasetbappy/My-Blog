@@ -1678,9 +1678,9 @@
     "@tiptap/extension-strike" "^2.2.4"
     "@tiptap/extension-text" "^2.2.4"
 
-"@tiptap/vue-3@^2.1.13":
+"@tiptap/vue-3@^2.1.13", "@tiptap/vue-3@^2.2.4":
   version "2.2.4"
-  resolved "https://registry.npmjs.org/@tiptap/vue-3/-/vue-3-2.2.4.tgz"
+  resolved "https://registry.yarnpkg.com/@tiptap/vue-3/-/vue-3-2.2.4.tgz#e253f32cb9a70736b6c345967879c5fcf2ac4ab5"
   integrity sha512-6Rue56OUmDl/OT07QcLsH1UvYGUmV8OFSDCrLrUyku/2lAYHwHz6+KhAB5paZt70nEGIw03G1KCT074negj6NQ==
   dependencies:
     "@tiptap/extension-bubble-menu" "^2.2.4"

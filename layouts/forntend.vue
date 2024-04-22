@@ -4,10 +4,10 @@ import Navbar from "~/components/layouts/frontend/Navbar.vue";
 <template>
   <div class="w-full min-h-full">
     <Navbar />
-    <div class="content mt-16 mx-4">
-      <div class="w-full flex mt-2">
+    <div class="content mt-12 md:mt-16 mx-4">
+      <div class="w-full flex flex-col md:flex-row mt-2">
         <!-- main slot content show -->
-        <div class="w-3/4 pr-3 min-h-screen">
+        <div class="w-full md:w-3/4 md:pr-3 mb-5 md:mb-0">
           <div>
             <img class="w-full mb-2" src="../assets/top.png" alt="" />
           </div>
@@ -15,7 +15,7 @@ import Navbar from "~/components/layouts/frontend/Navbar.vue";
         </div>
 
         <!-- right side bar -->
-        <div class="w-1/4">
+        <div class="w-full md:w-1/4">
           <SideCard />
         </div>
       </div>

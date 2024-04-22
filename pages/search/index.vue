@@ -1,8 +1,7 @@
 <template>
-  <div class="relative mt-36">
+  <div class="relative">
     <input
       type="text"
-      v-model="searchTerm"
       placeholder="Search..."
       class="border border-primary rounded-md py-2 px-4 w-full"
     />
