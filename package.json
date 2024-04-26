@@ -10,6 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@sidebase/nuxt-auth": "^0.7.2",
     "@tailwindcss/typography": "^0.5.12",
     "@tiptap/extension-blockquote": "^2.2.4",
     "@tiptap/extension-bullet-list": "^2.2.4",
@@ -33,9 +34,13 @@
     "@tiptap/extension-text-style": "^2.2.4",
     "@tiptap/extension-underline": "^2.2.4",
     "@tiptap/extension-youtube": "^2.2.4",
+    "dotenv": "^16.4.5",
     "lowlight": "^3.1.0",
+    "mongoose": "^8.3.2",
+    "next-auth": "4.21.1",
     "nuxt": "^3.10.3",
     "nuxt-icons": "^3.2.1",
+    "nuxt-server-utils": "^0.0.7",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"
   },

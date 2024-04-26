@@ -13,6 +13,7 @@
             id="email"
             name="email"
             type="email"
+            v-model="email"
             autocomplete="email"
             required
             class="mt-1 block w-full rounded-md border p-2 border-gray-300 shadow-sm focus:border-primary"
@@ -25,6 +26,7 @@
             id="password"
             name="password"
             type="password"
+            v-model="password"
             autocomplete="current-password"
             required
             class="mt-1 block w-full rounded-md border p-2 border-gray-300 shadow-sm focus:border-primary"
@@ -40,6 +42,7 @@
       <div>
         <button
           type="submit"
+          @click.prevent="submitForm"
           class="group relative w-full flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white bg-primary"
         >
           Sign in
@@ -53,6 +56,12 @@
 definePageMeta({
   layout: "forntend",
 });
+//data From From
+const email = ref("");
+const password = ref("");
+const submitForm = () => {
+  console.log(email.value, password.value);
+};
 </script>
 
 <style></style>

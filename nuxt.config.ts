@@ -1,12 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  runtimeConfig:{
+    authSecret: process.env.AUTH_SECRET
+  },
   modules: [
     "@nuxtjs/tailwindcss",
     "nuxt-primevue",
     "nuxt-icon",
     "nuxt-tiptap-editor",
-    '@nuxtjs/mdc'
+    '@nuxtjs/mdc',
+    'nuxt-server-utils',
+    '@sidebase/nuxt-auth'
   ],
   tiptap: {
     prefix: "Tiptap", //prefix for Tiptap imports, composables not included
@@ -37,7 +42,17 @@ export default defineNuxtConfig({
         }
     }
   },
-
+  nuxtServerUtils: {
+    enabled: true, // default
+    enableDevTools: true, // default
+    mongodbUri: process.env.MONGODB_URI,
+  },
+  auth: {
+    baseURL: process.env.AUTH_ORIGIN,
+    provider: {
+        type: 'authjs'
+    }
+},
   postcss: {
     plugins: {
       "postcss-custom-properties": false,
