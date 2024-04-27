@@ -1,3 +1,24 @@
+<script setup>
+definePageMeta({
+  layout: "forntend",
+  middleware: "guest",
+});
+//data From From
+const form = reactive({
+  email: "",
+  password: "",
+});
+const { signIn } = useAuth();
+async function handleLogin() {
+  try {
+    await signIn("credentials", {username: form.email, password: form.password });
+    useRouter().push("/admin");
+  } catch (e) {
+    console.log(e);
+
+  }
+}
+</script>
 <template>
   <div class="max-w-lg w-full mx-auto mt-10 shadow-md p-5">
     <div>
@@ -5,7 +26,7 @@
         Sign in to your account
       </h2>
     </div>
-    <form class="mt-8 space-y-6">
+    <form class="mt-8 space-y-6" >
       <div class="rounded-md shadow-sm">
         <div>
           <label for="email" class="sr-only">Email address</label>
@@ -13,7 +34,7 @@
             id="email"
             name="email"
             type="email"
-            v-model="email"
+            v-model="form.email"
             autocomplete="email"
             required
             class="mt-1 block w-full rounded-md border p-2 border-gray-300 shadow-sm focus:border-primary"
@@ -26,7 +47,7 @@
             id="password"
             name="password"
             type="password"
-            v-model="password"
+            v-model="form.password"
             autocomplete="current-password"
             required
             class="mt-1 block w-full rounded-md border p-2 border-gray-300 shadow-sm focus:border-primary"
@@ -42,7 +63,7 @@
       <div>
         <button
           type="submit"
-          @click.prevent="submitForm"
+          @click.prevent="handleLogin"
           class="group relative w-full flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white bg-primary"
         >
           Sign in
@@ -52,16 +73,6 @@
   </div>
 </template>
 
-<script setup>
-definePageMeta({
-  layout: "forntend",
-});
-//data From From
-const email = ref("");
-const password = ref("");
-const submitForm = () => {
-  console.log(email.value, password.value);
-};
-</script>
+
 
 <style></style>

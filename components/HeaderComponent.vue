@@ -4,6 +4,17 @@ import { useSidebar } from '../composables/useSdiebar'
 
 const dropdownOpen = ref(false)
 const { isOpen } = useSidebar()
+definePageMeta({
+  middleware: 'auth'
+})
+const {data, signOut} = useAuth();
+//handle logout
+const handleLogout = async () => {
+  await signOut()
+  useRouter().push({
+    name: 'login'
+  })
+}
 </script>
 
 <template>
@@ -84,23 +95,23 @@ const { isOpen } = useSidebar()
             v-show="dropdownOpen"
             class="absolute right-0 z-20 w-48 py-2 mt-2 bg-white rounded-md shadow-xl"
           >
-            <nuxt-link
-              to="/admin/users"
+            <p
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-600 hover:text-white"
-            >Profile</nuxt-link>
+            >{{data}}</p>
             <nuxt-link
               to="/admin/settings"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-600 hover:text-white"
             >Settings</nuxt-link>
-            <nuxt-link
-              to="/root-secret/"
+            <p
+            @click="handleLogout"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-600 hover:text-white"
             >
               Log out
-            </nuxt-link>
+      </p>
           </div>
         </transition>
       </div>
     </div>
   </header>
 </template>
+

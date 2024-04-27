@@ -1,5 +1,9 @@
 import { NuxtAuthHandler } from '#auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import {User} from '~/server/models/User';
+import bcrypt from 'bcrypt';
+
+
 export default NuxtAuthHandler({
     secret: useRuntimeConfig().authSecret,
     pages: {
@@ -8,11 +12,33 @@ export default NuxtAuthHandler({
     providers: [
         //@ts-expect-error
         CredentialsProvider.default({
-            name: 'Credentials',
+            name: 'credentials',
             credentials: { },
             async authorize(credntials:{username:string,password:string}) {
-                //TODO Fetch Users from DB
-                return {};
+              //Find User by email
+              const user  = await User.findOne({email:credntials.username});
+              if (!user) {
+                throw createError({
+                  statusCode: 401,
+                  statusMessage: "User not found",
+                });
+              }
+      
+              const isValid = await bcrypt.compare(
+                credntials.password,
+                user.password
+              );
+      
+              if (!isValid) {
+                throw createError({
+                  statusCode: 401,
+                  statusMessage: "Unauthorized",
+                });
+              }
+
+              return {
+
+              };
             }
         })
     ],
