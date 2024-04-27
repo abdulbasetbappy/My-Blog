@@ -1,3 +1,34 @@
+<script setup>
+definePageMeta({
+  layout: "forntend",
+});
+//data From From
+const form = reactive({
+  username: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+});
+const isLoading = ref(false);
+//Submit Form
+async function handleFormSubmit() {
+  try {
+    isLoading.value = true;
+    await useFetch("/api/user/signup", {
+  method: "POST",
+  body: form,
+});
+
+useRouter().push({
+      name: "login",
+    });
+  } catch (e) {
+    console.log(e);
+  } finally {
+    isLoading.value = false;
+  }
+}
+</script>
 <template>
   <div class="max-w-lg w-full mx-auto mt-10 shadow-md p-5">
     <div>
@@ -5,7 +36,7 @@
         SignUp to your account
       </h2>
     </div>
-    <form class="mt-8 space-y-6" @submit.prevent="login">
+    <form class="mt-8 space-y-6">
       <!-- Login Form -->
       <div class="rounded-md shadow-sm">
         <div>
@@ -14,7 +45,7 @@
             id="name"
             name="name"
             type="text"
-            v-model="name"
+            v-model="form.username"
             required
             class="relative block w-full px-3 py-2 border rounded-md border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
             placeholder="Your Name"
@@ -27,7 +58,7 @@
             name="email"
             type="email"
             autocomplete="email"
-            v-model="email"
+            v-model="form.email"
             required
             class="rounded-md mt-2 relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
             placeholder="Email address"
@@ -40,7 +71,7 @@
             name="password"
             type="password"
             autocomplete="current-password"
-            v-model="password"
+            v-model="form.password"
             required
             class="rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
             placeholder="Password"
@@ -52,7 +83,7 @@
             id="password"
             name="password"
             type="password"
-            v-model="confirmPassword"
+            v-model="form.confirmPassword"
             autocomplete="current-password"
             required
             class="rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
@@ -64,7 +95,11 @@
       <div>
         <button
           type="submit"
-          @click.prevent="submitForm"
+          :disabled="isLoading"
+          @click.prevent="handleFormSubmit"
+          :class="{
+          'opcatiy-20 cursor-not-allowed': isLoading,
+        }"
           class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
         >
           Signup
@@ -74,20 +109,5 @@
   </div>
 </template>
 
-<script setup>
-definePageMeta({
-  layout: "forntend",
-});
-//data From From
-const name = ref("");
-const email = ref("");
-const password = ref("");
-const confirmPassword = ref("");
-
-//Submit Form
-const submitForm = () => {
-  console.log(name.value, email.value, password.value, confirmPassword.value);
-};
-</script>
 
 <style lang="scss" scoped></style>

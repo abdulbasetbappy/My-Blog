@@ -34,6 +34,7 @@
     "@tiptap/extension-text-style": "^2.2.4",
     "@tiptap/extension-underline": "^2.2.4",
     "@tiptap/extension-youtube": "^2.2.4",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "lowlight": "^3.1.0",
     "mongoose": "^8.3.2",

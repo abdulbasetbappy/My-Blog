@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   runtimeConfig:{
-    authSecret: process.env.AUTH_SECRET
+    mongoDbUrl: process.env.MONGODB_URI,
+    authSecret: process.env.AUTH_SECRET,
   },
   modules: [
     "@nuxtjs/tailwindcss",
@@ -10,9 +11,11 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "nuxt-tiptap-editor",
     '@nuxtjs/mdc',
-    'nuxt-server-utils',
     '@sidebase/nuxt-auth'
   ],
+  nitro:{
+    plugins:['~/server/index.ts'],
+  },
   tiptap: {
     prefix: "Tiptap", //prefix for Tiptap imports, composables not included
   },
@@ -41,11 +44,6 @@ export default defineNuxtConfig({
             }
         }
     }
-  },
-  nuxtServerUtils: {
-    enabled: true, // default
-    enableDevTools: true, // default
-    mongodbUri: process.env.MONGODB_URI,
   },
   auth: {
     baseURL: process.env.AUTH_ORIGIN,
