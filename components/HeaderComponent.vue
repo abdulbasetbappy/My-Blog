@@ -8,6 +8,7 @@ definePageMeta({
   middleware: 'auth'
 })
 const {data, signOut} = useAuth();
+
 //handle logout
 const handleLogout = async () => {
   await signOut()
@@ -97,7 +98,7 @@ const handleLogout = async () => {
           >
             <p
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-600 hover:text-white"
-            >{{data}}</p>
+            >{{data?.user?.username}}</p>
             <nuxt-link
               to="/admin/settings"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-teal-600 hover:text-white"

@@ -9,6 +9,7 @@ const form = reactive({
   password: "",
   confirmPassword: "",
 });
+
 const isLoading = ref(false);
 //Submit Form
 async function handleFormSubmit() {
@@ -19,9 +20,10 @@ async function handleFormSubmit() {
   body: form,
 });
 
-useRouter().push({
-      name: "login",
-    });
+//if Response is 200 success then redirect to login page
+if (response.status === 200) {
+  router.push("/login");
+} 
   } catch (e) {
     console.log(e);
   } finally {
@@ -57,6 +59,7 @@ useRouter().push({
             id="email"
             name="email"
             type="email"
+            unique=true
             autocomplete="email"
             v-model="form.email"
             required
@@ -89,6 +92,10 @@ useRouter().push({
             class="rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
             placeholder="Confirm Password"
           />
+          <!--If Password Is Not Match-->
+          <div v-if="form.password !== form.confirmPassword" class="text-red-500 text-xs mt-1">
+            Passwords do not match
+          </div>
         </div>
       </div>
 

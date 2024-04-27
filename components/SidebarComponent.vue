@@ -9,7 +9,15 @@ const activeClass = ref(
 const inactiveClass = ref(
   "border-gray-900 text-gray-500 hover:bg-gray-600 hover:bg-opacity-25 hover:rounded-md hover:text-gray-100"
 );
+const {signOut} = useAuth();
 
+//handle logout
+const handleLogout = async () => {
+  await signOut()
+  useRouter().push({
+    name: 'login'
+  })
+}
 //Dropdown
 const nodes = ref([
   {
@@ -115,6 +123,7 @@ const nodes = ref([
 
       <div class="flex items-end justify-center mt-8">
         <button
+          @click="handleLogout"
           class="flex items-center px-16 py-3 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-teal-600 rounded-md hover:bg-teal-500 focus:outline-none focus:bg-teal-500"
         >
           <span class="mx-1">LogOut</span>

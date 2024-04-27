@@ -48,7 +48,7 @@ function toggleMobileMenu() {
           <!-- Navigation links (hidden on small devices) -->
           <div class="hidden md:block">
             <div class="flex items-center space-x-4">
-              <a
+              <NuxtLink
                 v-for="item in items"
                 :key="item.command"
                 :href="item.url"
@@ -56,7 +56,7 @@ function toggleMobileMenu() {
                 :class="{ border: isActive(item.url) }"
               >
                 {{ item.label }}
-              </a>
+              </NuxtLink>
               <NuxtLink to="/search">
                 <Icon
                   name="tabler:search"

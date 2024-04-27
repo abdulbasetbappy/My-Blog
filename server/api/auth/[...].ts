@@ -37,7 +37,8 @@ export default NuxtAuthHandler({
               }
 
               return {
-
+                ...user.toObject(),
+                password: undefined,
               };
             }
         })
@@ -47,6 +48,7 @@ export default NuxtAuthHandler({
       },
     
       callbacks: {
+
         async jwt({ token, user, account }) {
           if (user) {
             token = {
@@ -54,14 +56,13 @@ export default NuxtAuthHandler({
               ...user,
             };
           }
-    
           return token;
         },
     
         async session({ session, token }) {
           session.user = {
-            ...token,
             ...session.user,
+            ...token,
           };
     
           return session;

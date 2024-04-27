@@ -9,13 +9,13 @@ const form = reactive({
   password: "",
 });
 const { signIn } = useAuth();
-async function handleLogin() {
+const handleLogin = async() => {
   try {
     await signIn("credentials", {username: form.email, password: form.password });
-    useRouter().push("/admin");
   } catch (e) {
     console.log(e);
-
+  }finally{
+    $router.push("/admin")
   }
 }
 </script>
@@ -26,7 +26,7 @@ async function handleLogin() {
         Sign in to your account
       </h2>
     </div>
-    <form class="mt-8 space-y-6" >
+    <form class="mt-8 space-y-6" @submit.prevent="handleLogin" >
       <div class="rounded-md shadow-sm">
         <div>
           <label for="email" class="sr-only">Email address</label>
@@ -63,7 +63,6 @@ async function handleLogin() {
       <div>
         <button
           type="submit"
-          @click.prevent="handleLogin"
           class="group relative w-full flex justify-center py-2 px-4 text-sm font-medium rounded-md text-white bg-primary"
         >
           Sign in
