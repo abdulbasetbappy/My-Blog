@@ -14,7 +14,6 @@ const UserSchema = new Schema({
     trim: true,
     lowercase: true,
   },
-
   username: {
     type: String,
     required: true,
@@ -22,12 +21,15 @@ const UserSchema = new Schema({
     trim: true,
     lowercase: true,
   },
-
   password: {
     type: String,
     required: true,
     length: [6, "Password must be at least 6 characters long"],
   },
+  active:{
+    type:Boolean,
+    default:true,
+  }
 });
 
 export const User = model<UserDocument>("User", UserSchema);

@@ -109,6 +109,7 @@
   <script setup lang="ts">
   definePageMeta({
     layout: "admin",
+    middleware: "guest",
   });
   //refresh page
   const refreshPage = () => {

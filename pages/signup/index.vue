@@ -1,6 +1,7 @@
 <script setup>
 definePageMeta({
   layout: "forntend",
+  middleware: "guest",
 });
 //data From From
 const form = reactive({
@@ -16,14 +17,9 @@ async function handleFormSubmit() {
   try {
     isLoading.value = true;
     await useFetch("/api/user/signup", {
-  method: "POST",
-  body: form,
+    method: "POST",
+    body: form,
 });
-
-//if Response is 200 success then redirect to login page
-if (response.status === 200) {
-  router.push("/login");
-} 
   } catch (e) {
     console.log(e);
   } finally {

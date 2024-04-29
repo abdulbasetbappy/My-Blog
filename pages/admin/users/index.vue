@@ -13,13 +13,18 @@
       </ol>
     </nav>
     <!-- breadcrumb end -->
+<UserDetailsTable/>
 
-    </div>
+
+  </div>
 </template>
 
 <script setup lang="ts">
+import UserDetailsTable from '~/components/UserDetailsTable.vue';
+
 definePageMeta({
-  layout: 'admin'
+  layout: 'admin',
+  middleware: 'guest'
 })
 </script>
 
