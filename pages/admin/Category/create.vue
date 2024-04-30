@@ -22,39 +22,71 @@
     <!-- breadcrumb end -->
 
     <!-- Page Title -->
-    <h3 class="text-3xl font-medium text-gray-700">Add New Category</h3>
+    <h3 class="text-3xl font-medium text-gray-700">Create Category</h3>
 
     <!--Category details Input-->
     <form
       class="max-w-[500px] h-auto mt-16 p-6 rounded-xl m-auto bg-slate-300"
       action=""
     >
+      <h1 class="text-center font-semibold">Add New</h1>
       <!--Parent Category-->
-      <div class="card my-4 flex justify-content-center">
+      <div class="card my-4 flex justify-center flex-col">
+        <label class="font-medium" for="ParentCategory"
+          >Parent Category
+          <span class="italic font-normal text-sm text-gray-500"
+            >(optional)</span
+          >
+        </label>
         <Dropdown
-          v-model="selectedCity"
+          v-model="parenCategory"
           :options="cities"
           optionLabel="name"
-          placeholder="Select a City"
-          class="w-full md:w-14rem"
+          name="ParentCategory"
+          placeholder="Select Parent Category"
+          class="w-full outline-none md:w-14rem"
         />
       </div>
-      <div class="card my-4 flex gap-2 justify-content-center items-center">
-
-          <!--Category Input-->
-            <InputText class="h-10 w-[65%]" type="text" v-model="categoryName" />
-
-          <!--Category Status-->
-            <div class="flex w-[35%] p-1 flex-row justify-between items-center">
-            <p for="categoryName" class="text-sm font-semibold text-gray-700">Active</p>
-            <InputSwitch class="" v-model="categoryStatus" />
-            <p for="categoryName" class="text-sm font-semibold text-gray-700">InActive</p>
-            </div>
+      <div class="card my-4 flex gap-2 justify-center items-center">
+        <!--Category Input-->
+        <div class="w-[70%]">
+          <label class="font-medium" for="Category">Category Name</label>
+          <InputText
+            class="h-10  px-2 outline-none w-full"
+            name="Category"
+            type="text"
+            placeholder="New Category Name"
+            v-model="categoryName"
+          />
         </div>
+
+        <!--Category Status-->
+        <div
+          class="flex w-[30%] p-1 mt-4 flex-row justify-around items-center"
+        >
+        <p class="font-medium">Status</p>
+        <label class="flex cursor-pointer select-none items-center">
+          <div class="relative">
+            <input
+              type="checkbox"
+              class="sr-only"
+              @change="handleCheckboxChange"
+            />
+            <div class="block h-8 w-14 rounded-full bg-[#E5E7EB]"></div>
+            <div
+              :class="{ 'translate-x-full !bg-primary': isChecked }"
+              class="dot absolute left-1 top-1 h-6 w-6 rounded-full bg-white transition"
+            ></div>
+          </div>
+        </label>
+      </div>
+
+      </div>
 
       <button
         class="bg-teal-500 w-full py-3 rounded-xl text-xl font-semibold text-teal-50"
-        ype="submit"
+        type="submit"
+        @click.prevent="handleSubmit"
       >
         Add New Category
       </button>
@@ -65,21 +97,52 @@
 <script setup lang="ts">
 //Dropdown
 import Dropdown from "primevue/dropdown";
-const selectedCity = ref();
 const cities = ref([
-  { name: "New York", code: "NY" },
-  { name: "Rome", code: "RM" },
-  { name: "London", code: "LDN" },
-  { name: "Istanbul", code: "IST" },
-  { name: "Paris", code: "PRS" },
+  { name: "VueJs" },
+  { name: "HTML" },
+  { name: "CSS" },
+  { name: "Nuxt" },
+  { name: "React" },
+  { name: "Frontend" },
+  { name: "Backend" },
+  { name: "NodeJs" },
+  { name: "ExpressJs" },
 ]);
+const parenCategory = ref();
 //Input- Category name
 const categoryName = ref(null);
 //Switch Input - Category Active or Inactive
-const categoryStatus = ref(false);
+const isChecked = ref(false);
+const handleCheckboxChange = () => {
+  isChecked.value = !isChecked.value;
+};
+
 definePageMeta({
   layout: "admin",
 });
+const handleSubmit = () => {
+  const from = {
+    categoryName: categoryName.value,
+    status: isChecked.value,
+    parenCategory: parenCategory.value.name,
+  };
+  console.log(from);
+  //Sent data with body on /api/category/add route
+  fetch("/api/category/add", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(from),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 </script>
 
 <style scoped></style>

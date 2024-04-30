@@ -2,7 +2,7 @@ import { User } from '~/server/models/User';
 
 export default defineEventHandler( async () => {
     try{
-            //Return All Users
+    //Return All Users
     const users = await User.find({}, { password: 0 });;
     return users;
     } catch (err) {

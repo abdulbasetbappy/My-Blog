@@ -1,10 +1,11 @@
 <template>
-  <!-- Table Section End -->
-  <div class="mt-8">
-    <div class="mt-6">
+
+  <div class="mt-2">
+    <div class="">
+        <!-- Table Section End 
       <div class="flex flex-col mt-3 sm:flex-row">
-        <div class="flex">
-          <!--Number of Table Data-->
+        <div class="flex">-->
+          <!--Number of Table Data
           <div class="relative">
             <select
               class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 rounded-l appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
@@ -19,8 +20,8 @@
             >
             <Icon name="bx:bxs-chevron-down" class="w-4 h-4 fill-current" />
             </div>
-          </div>
-          <!--Filter By Status Table Data-->
+          </div>-->
+          <!--Filter By Status Table Data
           <div class="relative">
             <select
               class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border-t border-b border-r border-gray-400 rounded-r appearance-none sm:rounded-r-none sm:border-r-0 focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
@@ -36,8 +37,8 @@
             <Icon name="bx:bxs-chevron-down" class="w-4 h-4 fill-current" />
             </div>
           </div>
-        </div>
-        <!--Search Table Data-->
+        </div>-->
+        <!--Search Table Data
         <div class="relative block mt-2 sm:mt-0">
           <span class="absolute inset-y-0 left-0 flex items-center pl-2">
             <Icon name="material-symbols:search-rounded" class="w-4 h-4 fill-current" />
@@ -48,9 +49,9 @@
             class="block w-full py-2 pl-8 pr-6 text-sm text-gray-700 placeholder-gray-400 bg-white border border-b border-gray-400 rounded-l rounded-r appearance-none sm:rounded-l-none focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none"
           />
         </div>
-      </div>
+      </div>-->
       <!--Table Data-->
-      <div class="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
+      <div class="px-4 py-2 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
         <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
           <table class="min-w-full leading-normal">
             <!--Table Header-->
@@ -80,26 +81,30 @@
             </thead>
             <!--Table Body-->
             <tbody>
-              <tr v-for="(u, index) in paginatedTableData" :key="index">
+              <tr v-for="(category, index) in categories" :key="index">
                 <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                   <div class="flex items-center">
                     <div class="">
                       <p class="text-gray-900 whitespace-nowrap">
-                        {{ u.name }}
+                        {{ category.categoryName }}
                       </p>
                     </div>
                   </div>
                 </td>
                 <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                   <p class="text-gray-900 whitespace-nowrap">
-                    {{ u.role }}
+                    {{ category.parenCategory }}
                   </p>
                 </td>
                 <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                   <span
+                  v-if="category.status"
                     class="relative inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
-                    >{{ u.status }}</span
-                  >
+                    >Active</span>
+                  <span
+                  v-if="!category.status"
+                    class="relative inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full"
+                    >Inactive</span>
                 </td>
                 <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                   <!--Edit Button-->
@@ -219,7 +224,7 @@
               </tr>
             </tbody>
           </table>
-          <!--Pagination Section-->
+          <!--Pagination Section
           <div
             class="flex flex-col items-center px-5 py-5 bg-white border-t xs:flex-row xs:justify-between"
           >
@@ -239,7 +244,7 @@
                 Next
               </button>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>
@@ -247,11 +252,15 @@
 </template>
 
 <script setup lang="ts">
-//Table data
-import { useTableData } from "../composables/useTableData";
-const { paginatedTableData } = useTableData();
-
 const open = ref(false);
+import { defineProps } from 'vue';
+
+const props = defineProps({
+  categories: {
+    type: Array,
+    required: true,
+  },
+});
 </script>
 
 <style scoped></style>

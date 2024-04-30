@@ -54,7 +54,6 @@
 <script setup lang="ts">
 definePageMeta({
   layout: "admin",
-  middleware: "guest",
 });
 const form = reactive({
   username: "",

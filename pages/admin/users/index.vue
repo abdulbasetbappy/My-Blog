@@ -24,7 +24,6 @@ import UserDetailsTable from '~/components/UserDetailsTable.vue';
 
 definePageMeta({
   layout: 'admin',
-  middleware: 'guest'
 })
 </script>
 

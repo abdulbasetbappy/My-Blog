@@ -207,6 +207,7 @@ onMounted(async () => {
     console.error('Error fetching users:', error);
   }
 });
+
 //Total User count
 const totalUsers = computed(() => users.value.length);
 //Total Active Users count

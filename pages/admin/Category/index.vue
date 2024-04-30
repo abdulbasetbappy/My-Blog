@@ -37,7 +37,7 @@
               </div>
   
               <div class="mx-5">
-                <h4 class="text-2xl font-semibold text-gray-700">21</h4>
+                <h4 class="text-2xl font-semibold text-gray-700">{{ totalCategories }}</h4>
                 <div class="text-gray-500">Total Category</div>
               </div>
             </div>
@@ -52,7 +52,7 @@
               </div>
   
               <div class="mx-5">
-                <h4 class="text-2xl font-semibold text-gray-700">19</h4>
+                <h4 class="text-2xl font-semibold text-gray-700">{{ activeCategories }}</h4>
                 <div class="text-gray-500">Active</div>
               </div>
             </div>
@@ -67,7 +67,7 @@
               </div>
   
               <div class="mx-5">
-                <h4 class="text-2xl font-semibold text-gray-700">2</h4>
+                <h4 class="text-2xl font-semibold text-gray-700">{{ inActiveCategories }}</h4>
                 <div class="text-gray-500">Inactive</div>
               </div>
             </div>
@@ -79,7 +79,7 @@
       <div class="flex flex-row justify-between my-5">
         <!-- Add Category Button -->
         <div>
-          <!-- Add Category Modal Button -->
+          <!-- Add Category  -->
           <NuxtLink
             class="flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-teal-600 rounded-md hover:bg-teal-500 focus:outline-none focus:bg-teal-500"
             to="/Admin/Category/create"
@@ -102,19 +102,35 @@
       </div>
       <!-- Button Section End-->
   
-      <CategoryDetailsTable />
+      <CategoryDetailsTable :categories="Categories" />
     </div>
   </template>
   
   <script setup lang="ts">
   definePageMeta({
     layout: "admin",
-    middleware: "guest",
   });
   //refresh page
   const refreshPage = () => {
     location.reload();
   };
+  const Categories = ref([]);
+  //on Mounted Fetch Category data From /api/category route
+  onMounted( async () => {
+    try {
+      const response = await fetch("/api/category");
+      Categories.value = await response.json();
+      console.log(Categories.value);
+    } catch (error) {
+      console.error('Error fetching Category:', error);
+    }
+  });
+  //total Categories
+  const totalCategories = computed(()=>Categories.value.length);
+  //Active Categories
+  const activeCategories = computed(()=>Categories.value.filter((category) => category.status).length);
+  //Inactive Categories
+  const inActiveCategories = computed(()=>Categories.value.filter((category) => !category.status).length);
   </script>
   
   <style scoped></style>
