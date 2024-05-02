@@ -1,11 +1,10 @@
 <template>
-
   <div class="mt-2">
     <div class="">
-        <!-- Table Section End 
+      <!-- Table Section End 
       <div class="flex flex-col mt-3 sm:flex-row">
         <div class="flex">-->
-          <!--Number of Table Data
+      <!--Number of Table Data
           <div class="relative">
             <select
               class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border border-gray-400 rounded-l appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
@@ -21,7 +20,7 @@
             <Icon name="bx:bxs-chevron-down" class="w-4 h-4 fill-current" />
             </div>
           </div>-->
-          <!--Filter By Status Table Data
+      <!--Filter By Status Table Data
           <div class="relative">
             <select
               class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border-t border-b border-r border-gray-400 rounded-r appearance-none sm:rounded-r-none sm:border-r-0 focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500"
@@ -38,7 +37,7 @@
             </div>
           </div>
         </div>-->
-        <!--Search Table Data
+      <!--Search Table Data
         <div class="relative block mt-2 sm:mt-0">
           <span class="absolute inset-y-0 left-0 flex items-center pl-2">
             <Icon name="material-symbols:search-rounded" class="w-4 h-4 fill-current" />
@@ -81,7 +80,7 @@
             </thead>
             <!--Table Body-->
             <tbody>
-              <tr v-for="(category, index) in categories" :key="index">
+              <tr v-for="(category, index) in Categories" :key="index">
                 <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                   <div class="flex items-center">
                     <div class="">
@@ -93,27 +92,32 @@
                 </td>
                 <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                   <p class="text-gray-900 whitespace-nowrap">
-                    {{ category.parenCategory }} 
+                    {{ category.parenCategory }}
                   </p>
                 </td>
                 <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                   <span
-                  v-if="category.status"
+                    v-if="category.status"
                     class="relative inline-flex px-2 text-xs font-semibold leading-5 text-green-800 bg-green-100 rounded-full"
-                    >Active</span>
+                    >Active</span
+                  >
                   <span
-                  v-if="!category.status"
+                    v-if="!category.status"
                     class="relative inline-flex px-2 text-xs font-semibold leading-5 text-red-800 bg-red-100 rounded-full"
-                    >Inactive</span>
+                    >Inactive</span
+                  >
                 </td>
                 <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                   <!--Edit Button-->
-                  <button class="mx-1">
+                  <button class="mx-1" @click="handleUpdate(category._id)">
                     <Icon name="bx:bxs-edit" class="h-6 w-6 text-teal-600" />
                   </button>
                   <!--Delete Button-->
                   <button class="mx-1" @click="deleteCategoryID(category._id)">
-                    <Icon name="material-symbols:delete-outline-rounded" class="h-6 w-6 text-red-600" />
+                    <Icon
+                      name="material-symbols:delete-outline-rounded"
+                      class="h-6 w-6 text-red-600"
+                    />
                   </button>
                   <!--Modal Section-->
                   <div
@@ -253,40 +257,51 @@
 
 <script setup lang="ts">
 const open = ref(false);
-import { defineProps } from 'vue';
-
-const Categories = ref([]);
-const props = defineProps({
-  categories: {
-    type: Array,
-    required: true,
-  },
-});
+const Categories = ref();
+  //on Mounted Fetch Category data From /api/category route
+  onMounted(async () => {
+    try {
+      const response = await fetch("/api/category");
+      Categories.value = await response.json();
+      console.log(Categories.value);
+    } catch (error) {
+      console.error('Error fetching Category:', error);
+    }
+  });
 const IdDelete = ref();
 //get clicked Id & Modal Open
 const deleteCategoryID = (id: string) => {
-  IdDelete.value=id
+  IdDelete.value = id;
   open.value = true;
 };
 
-      //delete Category By Id
-  async function deleteCategory(id: string) {
-    try {
-      const response = await fetch(`/api/category/${id}`, {
-        method: "DELETE",
-      });
-      if (response.ok) {
-        Categories.value = Categories.value.filter((category) => category.id !== id);
-      }
-    } catch (error) {
-      console.error('Error deleting Category:', error);
-    }finally{
-      //reload
-      location.reload();
-      open.value = false;
+//delete Category By Id
+async function deleteCategory(id: string) {
+  try {
+    const response = await fetch(`/api/category/${id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      Categories.value = Categories.value.filter(
+        (category) => category.id !== id
+      );
     }
-  };
-    
+  } catch (error) {
+    console.error("Error deleting Category:", error);
+  } finally {
+    const response = await fetch("/api/category");
+      Categories.value = await response.json();
+    open.value = false;
+  }
+}
+
+//Edit Category
+const router = useRouter();
+const handleUpdate = (id:string) =>{
+  console.log(id);
+  //goto admin/category/[id].vue 
+  router.push(`/admin/category/${id as string}`);
+}
 </script>
 
 <style scoped></style>

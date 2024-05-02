@@ -116,7 +116,6 @@ const isChecked = ref(false);
 const handleCheckboxChange = () => {
   isChecked.value = !isChecked.value;
 };
-
 definePageMeta({
   layout: "admin",
   middleware: 'auth'
