@@ -93,7 +93,7 @@
                 </td>
                 <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
                   <p class="text-gray-900 whitespace-nowrap">
-                    {{ category.parenCategory }}
+                    {{ category.parenCategory }} 
                   </p>
                 </td>
                 <td class="px-5 py-5 text-sm bg-white border-b border-gray-200">
@@ -112,7 +112,7 @@
                     <Icon name="bx:bxs-edit" class="h-6 w-6 text-teal-600" />
                   </button>
                   <!--Delete Button-->
-                  <button class="mx-1" @click="open = true">
+                  <button class="mx-1" @click="deleteCategoryID(category._id)">
                     <Icon name="material-symbols:delete-outline-rounded" class="h-6 w-6 text-red-600" />
                   </button>
                   <!--Modal Section-->
@@ -197,7 +197,7 @@
                             Delete Category
                           </p>
                           <p class="text-sm text-center text-gray-500">
-                            Are you sure you want to delete this category?
+                            Are you sure you want to delete this this category?
                           </p>
                         </div>
 
@@ -211,7 +211,7 @@
                           </button>
                           <button
                             class="px-8 py-2 text-lg tracking-wide text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none"
-                            @click="open = false"
+                            @click="deleteCategory(IdDelete)"
                           >
                             Yes
                           </button>
@@ -255,12 +255,38 @@
 const open = ref(false);
 import { defineProps } from 'vue';
 
+const Categories = ref([]);
 const props = defineProps({
   categories: {
     type: Array,
     required: true,
   },
 });
+const IdDelete = ref();
+//get clicked Id & Modal Open
+const deleteCategoryID = (id: string) => {
+  IdDelete.value=id
+  open.value = true;
+};
+
+      //delete Category By Id
+  async function deleteCategory(id: string) {
+    try {
+      const response = await fetch(`/api/category/${id}`, {
+        method: "DELETE",
+      });
+      if (response.ok) {
+        Categories.value = Categories.value.filter((category) => category.id !== id);
+      }
+    } catch (error) {
+      console.error('Error deleting Category:', error);
+    }finally{
+      //reload
+      location.reload();
+      open.value = false;
+    }
+  };
+    
 </script>
 
 <style scoped></style>

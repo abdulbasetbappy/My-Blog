@@ -109,6 +109,7 @@
   <script setup lang="ts">
   definePageMeta({
     layout: "admin",
+    middleware: 'auth'
   });
   //refresh page
   const refreshPage = () => {
@@ -131,6 +132,8 @@
   const activeCategories = computed(()=>Categories.value.filter((category) => category.status).length);
   //Inactive Categories
   const inActiveCategories = computed(()=>Categories.value.filter((category) => !category.status).length);
+
+
   </script>
   
   <style scoped></style>

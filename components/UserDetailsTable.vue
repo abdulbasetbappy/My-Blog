@@ -214,6 +214,7 @@ const totalUsers = computed(() => users.value.length);
 const activeUsers = computed(() => users.value.filter((user) => user.active).length);
 //Total Inactive Users count
 const inactiveUsers = computed(() => users.value.filter((user) => !user.active).length);
+
 async function toggleActive(user) {
   try {
     // Toggle the user's active status

@@ -119,6 +119,7 @@ const handleCheckboxChange = () => {
 
 definePageMeta({
   layout: "admin",
+  middleware: 'auth'
 });
 const handleSubmit = () => {
   const from = {
