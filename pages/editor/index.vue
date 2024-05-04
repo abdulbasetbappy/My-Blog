@@ -1,4 +1,11 @@
 <script setup>
+//Import From PrimeVue
+import MultiSelect from "primevue/multiselect";
+import FileUpload from 'primevue/fileupload';
+import Dropdown from 'primevue/dropdown';
+//Import Composables
+import { useParentCategory } from "~/composables/useParentCategory";
+//Import From Tiptap Text Editor
 import Color from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
 import Underline from "@tiptap/extension-underline";
@@ -22,7 +29,6 @@ import TextAlign from "@tiptap/extension-text-align";
 // import StarterKit from '@tiptap/starter-kit'
 
 //TipTap Editor
-const foo = ref(1);
 const editor = useEditor({
   content: "<p>I'm running Tiptap with Vue.js. 🎉</p>",
   extensions: [
@@ -67,7 +73,7 @@ const editor = useEditor({
     },
   },
   onUpdate: ({ editor }) => {
-    foo.value = editor.getHTML();
+    payload.editorContent = editor.getHTML();
   },
 });
 
@@ -106,12 +112,92 @@ const addVideo = () => {
     height: 480, // Default height
   });
 };
+//BeforeMounted Editor Value Delete
 onBeforeUnmount(() => {
   editor.value.destroy();
 });
+
+
+//Multiple Select Dropdown
+const Options = ref(useParentCategory().parentCategory);
+//Status
+const statusOptions = ref([
+  { name: "Draft"},
+  { name: "Published"},
+]);
+
+//Payload for the form value Store
+const payload = reactive({
+  title: "",
+  image: "",
+  category: [],
+  status: "",
+  metaTitle: "",
+  metaDescription: "",
+  editorContent: "",
+});
+//Handle Form
+const handleSubmit = () => {
+  console.log(payload);
+};
+//Handle File Change
+const handleFileChange = (e) => {
+  payload.image = e.target.files[0];
+  console.log(payload.image);
+};
 </script>
 
 <template>
+  <!--Input Field-->
+  <div class="flex flex-row gap-2">
+    <div class="border-2 w-full">
+      <!--Title Input -->
+      <div class="flex justify-start flex-col mb-4 text-gray-700 items-start">
+        <p class="text-xl font-medium">Title</p>
+        <input
+          class="w-full h-10 border border-gray-500 focus:outline-none tracking-normal rounded-md px-3 py-2 font-medium text-xl"
+          type="text"
+          v-model="payload.title"
+        />
+      </div>
+      <!--Category/Image/Status Input -->
+      <div class="flex mb-3 w-full">
+        <!--Category Selection-->
+        <div class="w-2/4">
+          <p class="text-xl font-medium">Category</p>
+          <MultiSelect
+            v-model="payload.category"
+            display="chip"
+            :options="Options"
+            optionLabel="name"
+            placeholder="Select Cities"
+            :maxSelectedLabels="3"
+            class="w-full border border-gray-500 md:w-20rem"
+          />
+        </div>
+
+        <!--Image Upload-->
+        <div class="w-1/4 mx-2">
+          <p class="text-xl font-medium">Upload Image</p>
+          <input type="file" @change="handleFileChange">
+          {{ payload.image}}
+        </div>
+
+        <!--Status Selection-->
+        <div class="w-1/4">
+          <p class="text-xl font-medium">Status</p>
+          <Dropdown
+            v-model="payload.status"
+            :options="statusOptions"
+            optionLabel="name"
+            placeholder="Select Status"
+            class="w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Input Field End-->
   <!-- Editor Buttons -->
   <div
     class="flex flex-wrap justify-start items-start border border-gray-500 p-3 gap-2"
@@ -310,7 +396,10 @@ onBeforeUnmount(() => {
         @click="editor.chain().focus().toggleHighlight().run()"
         :class="{ 'is-active': editor.isActive('highlight') }"
       >
-        <Icon name="material-symbols:format-ink-highlighter-rounded" class="h-5 w-5" />
+        <Icon
+          name="material-symbols:format-ink-highlighter-rounded"
+          class="h-5 w-5"
+        />
       </button>
     </div>
     <!--Text Color End-->
@@ -511,9 +600,36 @@ onBeforeUnmount(() => {
   </div>
   <TiptapEditorContent :editor="editor" />
 
-  <div>
-    <p>{{ foo }}</p>
+  <!--Meta Data-->
+  <div class="flex justify-start flex-row gap-2 mt-4 text-gray-700 items-start">
+    <!--Meta Tag-->
+    <div class="w-full">
+      <p class="text-xl font-medium">
+        Meta Tag<span class="text-sm font-normal italic"
+          >(Comma-separated",")</span
+        >
+      </p>
+      <input
+        class="w-full h-10 border border-gray-500 focus:outline-none tracking-normal rounded-md px-3 py-2 font-medium text-xl"
+        type="text"
+        v-model="payload.metaTitle"
+      />
+    </div>
   </div>
+  <!--Meta Description-->
+  <div class="flex justify-start flex-col my-2 text-gray-700 items-start">
+    <p class="text-xl font-medium">
+      Meta Description
+      <span class="text-sm font-normal italic">(At Least 256 Characters)</span>
+    </p>
+    <textarea
+      class="w-full border border-gray-500 h-[120px] focus:outline-none tracking-normal rounded-md px-3 py-2 font-normal text-sm"
+      placeholder="Your Meta Description goes here..."
+      v-model="payload.metaDescription"
+    />
+  </div>
+  <!--Meta Data End-->
+  <button @click.prevent="handleSubmit" >Submit</button>
 </template>
 
 <style scoped>

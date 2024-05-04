@@ -95,19 +95,10 @@
 </template>
 
 <script setup lang="ts">
+import { useParentCategory } from "~/composables/useParentCategory";
 //Dropdown
 import Dropdown from "primevue/dropdown";
-const cities = ref([
-  { name: "VueJs" },
-  { name: "HTML" },
-  { name: "CSS" },
-  { name: "Nuxt" },
-  { name: "React" },
-  { name: "Frontend" },
-  { name: "Backend" },
-  { name: "NodeJs" },
-  { name: "ExpressJs" },
-]);
+const cities = ref(useParentCategory().parentCategory);
 const parenCategory = ref();
 //Input- Category name
 const categoryName = ref(null);
