@@ -218,7 +218,7 @@
                           </button>
                           <button
                             class="px-8 py-2 text-lg tracking-wide text-white bg-red-600 rounded-md hover:bg-red-500 focus:outline-none"
-                            @click="open = false"
+                            @click="deleteBlog(blog._id)"
                           >
                             Yes
                           </button>
@@ -278,6 +278,27 @@ const router = useRouter();
 
 const handleEdit = (id: string) => {
   router.push(`/admin/blogs/${id as string}`);
+}
+//delete
+async function deleteBlog(id: string) {
+  try {
+    const response = await fetch(`/api/post/${id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      Blogs.value = Blogs.value.filter(
+        (blog) => blog.id !== id
+      );
+    }
+  } catch (error) {
+    console.error("Error deleting Category:", error);
+  } finally {
+    const response = await fetch("/api/post");
+    Blogs.value = await response.json();
+    if (response.status === 200) {
+      open.value = false;
+    }
+  }
 }
 </script>
 
