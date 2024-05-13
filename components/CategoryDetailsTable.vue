@@ -298,7 +298,6 @@ async function deleteCategory(id: string) {
 //Edit Category
 const router = useRouter();
 const handleUpdate = (id:string) =>{
-  console.log(id);
   //goto admin/category/[id].vue 
   router.push(`/admin/category/${id as string}`);
 }

@@ -30,7 +30,7 @@
               </div>
   
               <div class="mx-5">
-                <h4 class="text-2xl font-semibold text-gray-700">21</h4>
+                <h4 class="text-2xl font-semibold text-gray-700">{{ totalBlogs }}</h4>
                 <div class="text-gray-500">Total Blogs</div>
               </div>
             </div>
@@ -45,7 +45,7 @@
               </div>
   
               <div class="mx-5">
-                <h4 class="text-2xl font-semibold text-gray-700">19</h4>
+                <h4 class="text-2xl font-semibold text-gray-700">{{ activeBlogs }}</h4>
                 <div class="text-gray-500">Active</div>
               </div>
             </div>
@@ -60,7 +60,7 @@
               </div>
   
               <div class="mx-5">
-                <h4 class="text-2xl font-semibold text-gray-700">2</h4>
+                <h4 class="text-2xl font-semibold text-gray-700">{{ inactiveBlogs }}</h4>
                 <div class="text-gray-500">Inactive</div>
               </div>
             </div>
@@ -74,7 +74,7 @@
         <div>
           <nuxtLink
             class="flex items-center cursor-pointer px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-teal-600 rounded-md hover:bg-teal-500 focus:outline-none focus:bg-teal-500"
-            to="/admin/write"
+            to="Blogs/Create"
           >
             <Icon name="bx:bxs-pencil" class="w-5 h-5 mx-1" />
             <span class="pl-2">Write Blog</span>
@@ -82,15 +82,6 @@
         </div>
         <!--  Write Blog Button End -->
   
-        <!--Refresh Button-->
-        <button
-          class="flex items-center px-2 py-2 font-medium tracking-wide text-white capitalize transition-colors duration-200 transform bg-teal-600 rounded-md hover:bg-teal-500 focus:outline-none focus:bg-teal-500"
-          @click="refreshPage"
-        >
-          <Icon name="material-symbols:refresh-rounded" class="w-5 h-5 mx-1" />
-          <span class="mx-1">Refresh</span>
-        </button>
-        <!--Refresh Button End-->
       </div>
       <!-- Button Section End-->
   
@@ -103,11 +94,24 @@
   <script setup lang="ts">
   definePageMeta({
     layout: "admin",
+    middleware: 'auth'
   });
-  //refresh page
-  const refreshPage = ()=>{
-    location.reload();
-  }
+  //get all Blogs\
+  const Blogs = ref([]);
+
+  onMounted(async () => {
+    const response = await fetch('/api/post');
+    const data = await response.json();
+    Blogs.value = data;
+    console.log(Blogs.value);
+  });
+
+  //get all Blogs
+  const totalBlogs = computed(() => Blogs.value.length);
+  //get all Blogs Status===Published then count active
+  const activeBlogs = computed(() => Blogs.value.filter(blog => blog.status === 'Published').length);
+  //get all Blogs Status===Draft then count inactive
+  const inactiveBlogs = computed(() => Blogs.value.filter(blog => blog.status === 'Draft').length);
   </script>
   
   <style scoped></style>

@@ -1,7 +1,11 @@
-<script setup>
+<script setup >
+definePageMeta({
+  layout: "admin",
+  middleware: "auth",
+});
+
 //Import From PrimeVue
 import MultiSelect from "primevue/multiselect";
-import FileUpload from 'primevue/fileupload';
 import Dropdown from 'primevue/dropdown';
 //Import Composables
 import { useParentCategory } from "~/composables/useParentCategory";
@@ -27,179 +31,180 @@ import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
 import TextAlign from "@tiptap/extension-text-align";
 // import StarterKit from '@tiptap/starter-kit'
-
+const Post = ref([]);
+const Content = ref("");
 //TipTap Editor
 const editor = useEditor({
-  content: "<p>I'm running Tiptap with Vue.js. 🎉</p>",
-  extensions: [
-    TiptapStarterKit,
-    Color,
-    TextStyle,
-    Underline,
-    BulletList,
-    ListItem,
-    OrderedList,
-    HorizontalRule,
-    HardBreak,
-    Blockquote,
-    Highlight,
-    TaskItem,
-    TaskList,
-    Link,
-    TextAlign.configure({
-      types: ["heading", "paragraph"],
-    }),
-    Youtube.configure({
-      width: 480,
-      height: 320,
-      inline: false,
-      controls: false,
-      autoplay: true,
-      loop: "true",
-      progressBarColor: "white",
-    }),
-    FontFamily,
-    Table.configure({
-      resizable: true,
-    }),
-    TableCell,
-    TableHeader,
-    TableRow,
-  ],
-  editorProps: {
-    attributes: {
-      class:
-        "prose max-w-none border border-gray-500 p-4 leading-3 shadow-lg bg-white min-h-[32rem] max-h-[16rem] overflow-y-auto focus:outline-none",
-    },
+content: "content",
+extensions: [
+  TiptapStarterKit,
+  Color,
+  TextStyle,
+  Underline,
+  BulletList,
+  ListItem,
+  OrderedList,
+  HorizontalRule,
+  HardBreak,
+  Blockquote,
+  Highlight,
+  TaskItem,
+  TaskList,
+  Link,
+  TextAlign.configure({
+    types: ["heading", "paragraph"],
+  }),
+  Youtube.configure({
+    width: 480,
+    height: 320,
+    inline: false,
+    controls: false,
+    autoplay: true,
+    loop: "true",
+    progressBarColor: "white",
+  }),
+  FontFamily,
+  Table.configure({
+    resizable: true,
+  }),
+  TableCell,
+  TableHeader,
+  TableRow,
+],
+editorProps: {
+  attributes: {
+    class:
+      "prose max-w-none border border-gray-500 p-4 leading-3 shadow-lg bg-white min-h-[32rem] max-h-[16rem] overflow-y-auto focus:outline-none",
   },
-  onUpdate: ({ editor }) => {
-    payload.editorContent = editor.getHTML();
-  },
+},
+
+onUpdate: ({ editor }) => {
+  Content.value = editor.getHTML();
+},
 });
 
 //setLink
 const setLink = () => {
-  const previousUrl = editor.value.getAttributes("link").href;
-  const url = window.prompt("URL", previousUrl);
+const previousUrl = editor.value.getAttributes("link").href;
+const url = window.prompt("URL", previousUrl);
 
-  // cancelled
-  if (url === null) {
-    return;
-  }
+// cancelled
+if (url === null) {
+  return;
+}
 
-  // empty
-  if (url === "") {
-    editor.value.chain().focus().extendMarkRange("link").unsetLink().run();
+// empty
+if (url === "") {
+  editor.value.chain().focus().extendMarkRange("link").unsetLink().run();
 
-    return;
-  }
+  return;
+}
 
-  // update link
-  editor.value
-    .chain()
-    .focus()
-    .extendMarkRange("link")
-    .setLink({ href: url })
-    .run();
+// update link
+editor.value
+  .chain()
+  .focus()
+  .extendMarkRange("link")
+  .setLink({ href: url })
+  .run();
 };
 //Youtube video
 const addVideo = () => {
-  const url = prompt("Enter YouTube URL");
+const url = prompt("Enter YouTube URL");
 
-  editor.value.commands.setYoutubeVideo({
-    src: url,
-    width: 640, // Default width
-    height: 480, // Default height
-  });
+editor.value.commands.setYoutubeVideo({
+  src: url,
+  width: 640, // Default width
+  height: 480, // Default height
+});
 };
 //BeforeMounted Editor Value Delete
 onBeforeUnmount(() => {
-  editor.value.destroy();
+editor.value.destroy();
 });
 
-
+const category = ref([]);
 //Multiple Select Dropdown
 const Options = ref(useParentCategory().parentCategory);
 //Status
 const statusOptions = ref([
-  { name: "Draft"},
-  { name: "Published"},
+{ name: "Draft"},
+{ name: "Published"},
 ]);
+//params
+const route = useRoute(); 
 
-//Payload for the form value Store
-const payload = reactive({
-  title: "",
-  category: "",
-  status: "",
-  metaTitle: "",
-  metaDescription: "",
-  editorContent: "",
-});
-
-// Function to convert image to Base64
-const imageToBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-
-    // Read the contents of the image file as a data URL
-    reader.readAsDataURL(file);
-
-    // When the reading operation is completed
-    reader.onload = () => {
-      // Resolve with the Base64 representation of the image
-      resolve(reader.result.split(',')[1]); // Remove the data URL prefix
-    };
-
-    // If there's an error reading the file
-    reader.onerror = (error) => {
-      reject(error);
-    };
-  });
-};
-
-let selectedFile = ref(null);
-const imageUrl = ref(null);
- // Handle file change event
-const handleFileChange = async (event) => {
-  selectedFile = event.target.files[0];
-  const base64Image = await imageToBase64(selectedFile);
-imageUrl.value = 'data:image/jpeg;base64,' + base64Image;
-};
-
-//Handle Form
-const handleSubmit = async () => {
-// Convert the image to Base64 format
-const base64Image = await imageToBase64(selectedFile);
-imageUrl.value = 'data:image/jpeg;base64,' + base64Image;
-/*handle from data*/
-  const formData = {
-    title: payload.title,
-    category: payload.category.map((item) => item.name).join(", "),
-    status: payload.status.name,
-    metaTitle: payload.metaTitle,
-    metaDescription: payload.metaDescription,
-    editorContent: payload.editorContent,
-    imageData: base64Image,
-  }
-  console.log(formData);
-  //send Data With Body in api/post/add
+onMounted(async() => {
+  const responseData = ref([])
 try {
-  const response = await useFetch("/api/post/add", {
-    method: "POST",
-    body: formData,
-  });
-  console.log(response);
+  const PostId = route.params.id[0]
+  const data = await fetch(`/api/post/${PostId}`)
+  responseData.value = await data.json()
+
+
+  Post.value = responseData.value.data
+  Content.value = responseData.value.data.editorContent
+  category.value = responseData.value.data.category.split(', ')
+  console.log(Content.value);
 } catch (error) {
   console.log(error);
 }
+});
+//Handle Form
+const handleSubmit = async () => {
+
+/*handle from data*/
+const formData = {
+      title: Post.title,
+      category: category.value.map((item) => item.name).join(", "),
+      status: Post.status,
+      metaTitle: Post.metaTitle,
+      metaDescription: Post.metaDescription,
+      editorContent: Content.editorContent,
+      ImageData: Post.imageData
+}
+console.log(formData);
+//send Data With Body in api/post/add
+try {
+const response = await useFetch("/api/post/", {
+  method: "PUT",
+  body: formData,
+});
+console.log(response);
+} catch (error) {
+console.log(error);
+}
 };
-
-
-
 </script>
 
+
+
 <template>
-  <!--Input Field-->
+    <!-- breadcrumb -->
+    <nav class="text-sm font-semibold mb-6" aria-label="Breadcrumb">
+      <ol class="list-none p-0 inline-flex">
+        <li class="flex items-center text-blue-500">
+          <nuxtLink to="/admin" class="text-gray-700">Admin</nuxtLink>
+          <Icon name="uil:arrow-right" />
+        </li>
+        <li class="flex items-center">
+          <nuxtLink to="/admin/blogs" class="text-gray-700">Blogs</nuxtLink>
+        </li>
+        <li class="flex items-center text-blue-500">
+          <Icon name="uil:arrow-right" />
+          <nuxtLink to="/admin/blogs/All-Blogs" class="text-gray-700"
+            >All-Blogs</nuxtLink
+          >
+        </li>
+      </ol>
+    </nav>
+    <!-- breadcrumb end -->
+    <!-- Page Title -->
+    <h3 class="text-3xl font-medium text-gray-700">Update Blog</h3>
+
+
+
+      <!--Input Field-->
   <div class="flex flex-row gap-2">
     <div class="border-2 w-full">
       <!--Title Input -->
@@ -208,7 +213,7 @@ try {
         <input
           class="w-full h-10 border border-gray-500 focus:outline-none tracking-normal rounded-md px-3 py-2 font-medium text-xl"
           type="text"
-          v-model="payload.title"
+          v-model="Post.title"
         />
       </div>
       <!--Category/Image/Status Input -->
@@ -217,10 +222,11 @@ try {
         <div class="w-2/4">
           <p class="text-xl font-medium">Category</p>
           <MultiSelect
-            v-model="payload.category"
+            v-model="category"
             display="chip"
             :options="Options"
             optionLabel="name"
+            optionValue="name"
             placeholder="Select Cities"
             :maxSelectedLabels="3"
             class="w-full border border-gray-500 md:w-20rem"
@@ -230,17 +236,19 @@ try {
         <!--Image Upload-->
         <div class="w-1/4 mx-2">
           <p class="text-xl font-medium">Upload Image</p>
-          <input type="file" @change="handleFileChange" accept="image/*" />
-          <img :src="imageUrl" alt="Uploaded Image" style="max-width: 100%" />
+          <input
+            type="file"
+          />
         </div>
 
         <!--Status Selection-->
         <div class="w-1/4">
           <p class="text-xl font-medium">Status</p>
           <Dropdown
-            v-model="payload.status"
+            v-model="Post.status"
             :options="statusOptions"
             optionLabel="name"
+            optionValue="name"
             placeholder="Select Status"
             class="w-full"
           />
@@ -650,7 +658,7 @@ try {
     <!--Link Block End-->
   </div>
 
-  <TiptapEditorContent :editor="editor" />
+  <TiptapEditorContent :editor="editor"/>
 
   <!--Meta Data-->
   <div class="flex justify-start flex-row gap-2 mt-4 text-gray-700 items-start">
@@ -664,7 +672,7 @@ try {
       <input
         class="w-full h-10 border border-gray-500 focus:outline-none tracking-normal rounded-md px-3 py-2 font-medium text-xl"
         type="text"
-        v-model="payload.metaTitle"
+        v-model="Post.metaTitle"
       />
     </div>
   </div>
@@ -677,14 +685,16 @@ try {
     <textarea
       class="w-full border border-gray-500 h-[120px] focus:outline-none tracking-normal rounded-md px-3 py-2 font-normal text-sm"
       placeholder="Your Meta Description goes here..."
-      v-model="payload.metaDescription"
+      v-model="Post.metaDescription"
     />
   </div>
   <!--Meta Data End-->
   <button @click.prevent="handleSubmit" >Submit</button>
-</template>
+  </template>
+  
 
-<style scoped>
+  
+  <style scoped>
 /* Basic editor styles */
 
 code {
@@ -717,3 +727,4 @@ button {
   list-style-type: disc !important;
 }
 </style>
+  

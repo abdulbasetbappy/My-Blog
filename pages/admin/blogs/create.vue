@@ -3,6 +3,7 @@
 import TipTapEditor from "../../editor/index.vue";
 definePageMeta({
   layout: "admin",
+  middleware: "auth",
 });
 
 </script>

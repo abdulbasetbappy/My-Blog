@@ -6,11 +6,11 @@ export default defineNuxtConfig({
     authSecret: process.env.AUTH_SECRET,
   },
   modules: [
+    "nuxt-tiptap-editor",
+    '@nuxtjs/mdc',
     "@nuxtjs/tailwindcss",
     "nuxt-primevue",
     "nuxt-icon",
-    "nuxt-tiptap-editor",
-    '@nuxtjs/mdc',
     '@sidebase/nuxt-auth'
   ],
   nitro:{

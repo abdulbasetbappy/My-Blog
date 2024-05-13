@@ -12,11 +12,11 @@ const PostSchema = new Schema({
     required: true,
     },
     category:{
-    type: Array,
+    type: String,
     required: true,
     },
     status:{   
-    type:Object,
+    type:String,
     required: true,
     },
     metaTitle:{
@@ -27,8 +27,17 @@ const PostSchema = new Schema({
     type: String,
     required: true,
     },
-    image:{
-    type: File,
+    editorContent:{
+        type: String,
+        required: true,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+    },
+    imageData: {
+        type: String,
+        required: true
     }
 });
 
