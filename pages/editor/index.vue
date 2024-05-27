@@ -3,8 +3,6 @@
 import MultiSelect from "primevue/multiselect";
 import FileUpload from 'primevue/fileupload';
 import Dropdown from 'primevue/dropdown';
-//Import Composables
-import { useParentCategory } from "~/composables/useParentCategory";
 //Import From Tiptap Text Editor
 import Color from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";
@@ -118,8 +116,6 @@ onBeforeUnmount(() => {
 });
 
 
-//Multiple Select Dropdown
-const Options = ref(useParentCategory().parentCategory);
 //Status
 const statusOptions = ref([
   { name: "Draft"},

@@ -1,15 +1,12 @@
 import { Schema, model } from "mongoose";
 
 export interface UserDocument extends Document {
-    parenCategory: string;
   categoryName: string;
   status: boolean;
+  createdAt: Date;
 }
 
 const CategorySchema = new Schema({
-    parenCategory: {
-    type: String,
-  },
   categoryName: {
     type: String,
     required: true,
@@ -18,7 +15,15 @@ const CategorySchema = new Schema({
   },
   status:{
     type:Boolean,
-  }
+  },
+  createdBy:{
+    type: String,
+    required: true,
+  },
+  createdDate: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export const Category = model<UserDocument>("Category", CategorySchema);

@@ -42,17 +42,17 @@ function toggleMobileMenu() {
     <!-- Navigation Bar -->
     <div class="bg-primary w-full px-5 fixed top-0">
       <div class="py-1 flex justify-between items-center">
-        <div class="flex items-center justify-between w-full mx-auto">
+        <div class="flex items-center justify-between w-full py-3 mx-auto">
           <!-- Logo -->
-          <div class="font-bold text-xl text-white">Blogs</div>
+          <NuxtLink to="/" class="font-bold text-2xl cursor-pointer text-white">Blogs</NuxtLink>
           <!-- Navigation links (hidden on small devices) -->
           <div class="hidden md:block">
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center gap-4">
               <NuxtLink
                 v-for="item in items"
                 :key="item.command"
                 :href="item.url"
-                class="text-white cursor-pointer px-3 py-2 rounded-md text-xl font-medium"
+                class="text-white px-3 rounded-md text-lg font-medium"
                 :class="{ border: isActive(item.url) }"
               >
                 {{ item.label }}
@@ -78,20 +78,7 @@ function toggleMobileMenu() {
       </div>
     </div>
 
-    <!-- Mobile menu (shown on small devices) -->
-    <div v-show="mobileMenuOpen" class="sm:hidden" id="mobile-menu">
-      <div class="px-2 pt-2 pb-3 space-y-1 bg-gray-100 mt-16">
-        <a
-          v-for="item in items"
-          :key="item.command"
-          :href="item.url"
-          class="text-black block px-3 py-2 rounded-md text-base font-medium"
-          :class="{ 'bg-white': isActive(item.url) }"
-        >
-          {{ item.label }}
-        </a>
-      </div>
-    </div>
+
   </nav>
 </template>
 

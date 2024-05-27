@@ -7,8 +7,6 @@ definePageMeta({
 //Import From PrimeVue
 import MultiSelect from "primevue/multiselect";
 import Dropdown from 'primevue/dropdown';
-//Import Composables
-import { useParentCategory } from "~/composables/useParentCategory";
 //Import From Tiptap Text Editor
 import Color from "@tiptap/extension-color";
 import TextStyle from "@tiptap/extension-text-style";

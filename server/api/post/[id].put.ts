@@ -1,4 +1,5 @@
-import { Category } from "~/server/models/category";
+import { Post } from '~/server/models/post';
+
 
 export default defineEventHandler(async(event)=>{
     // Get data form body
@@ -9,7 +10,7 @@ export default defineEventHandler(async(event)=>{
 
 
         // Find the Category by ID and update its data
-        const updatedCategory = await Category.findByIdAndUpdate(id, body, { new: true });
+        const updatedCategory = await Post.findByIdAndUpdate(id, body, { new: true });
 
         if (!updatedCategory) {
             // If no Category with the given ID is found, return an error
@@ -17,7 +18,7 @@ export default defineEventHandler(async(event)=>{
         }
 
         // Return the updated Category
-        return { ...updatedCategory.toObject(), success: true, status:200, message: "Category updated successfully"};
+        return { success: true, data: updatedCategory };
     } catch (error: any) {
         // Handle any errors that occur during the update process
         return { success: false, error: error.message };

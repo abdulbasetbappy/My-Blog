@@ -1,20 +1,21 @@
 <script setup>
+import { useBlogStore } from '~/store/blogStore';
+
 definePageMeta({
-    layout: "forntend",
-});
-onMounted(() => {
-    window.addEventListener("scroll", handleScroll);
+    layout: "frontend",
 });
 
-const handleScroll = () => {
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    const scrolled = window.scrollY;
-    if (Math.ceil(scrolled) === scrollable) {
-        console.log("You've reached the bottom!");
-    }
-};
+const blogStore = useBlogStore();
+
+onMounted(() => {
+    blogStore.fetchBlogs();
+});
 </script>
+
 <template>
-    <HomeContent />
+<div v-for="blog in blogStore.blogs" :key="blog.title">
+    {{ blog.title }}
+</div>
 </template>
+
 <style scoped></style>

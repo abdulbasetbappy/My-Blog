@@ -1,40 +1,5 @@
 <script setup>
-import bannar from "../assets/banner.jpg";
 
-const newpost = [
-    {
-        id: 6,
-        img: bannar,
-        label: "In Label",
-        title: "Ini Adalah Judul Artikel",
-        user: "Ridho Satriawan",
-        description:
-            "Apa itu HTML? Buat Kamu yang pernah membuat sebuah website pastinya sudah tidak asing lagi dengan yang namaya HTML.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo illum aperiam in quisquam quos saepe iusto adipisci autem repellendus eius",
-        datePost: "31 Agustus 2024",
-        view: "316",
-    },
-];
-
-const Blogs = ref([]);
-//onmounted get all data from /api/post
-onMounted(async () => {
-    const response = await fetch('/api/post');
-    const data = await response.json();
-    Blogs.value = data;
-    console.log(Blogs.value);
-});
-
-
-
-
-
-/*Only show 100 letters in description
-const truncateDescription = (description) => {
-    if (description.length > 20) {
-        return description.slice(0, 20) + "...";
-    }
-    return description;
-}; */
 
 
 </script>

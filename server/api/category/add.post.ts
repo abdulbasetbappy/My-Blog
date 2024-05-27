@@ -13,7 +13,7 @@ export default defineEventHandler(async(event)=>{
         }
         const category = await Category.create({ ...body });
 
-        return { ...category.toObject(), success: true, message: "Category created successfully"};
+        return { ...category.toObject(), success: true, status:200, message: "Category created successfully"};
     }catch(error:any){
         throw createError({
             statusCode: 500,

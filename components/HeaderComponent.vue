@@ -7,6 +7,7 @@ const { isOpen } = useSidebar()
 definePageMeta({
   middleware: 'auth'
 })
+
 const {data, signOut} = useAuth();
 
 //handle logout

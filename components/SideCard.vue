@@ -1,11 +1,10 @@
 <template>
   <!-- Right Side -->
-  <img class="w-full mb-5" src="../assets/right.png" alt="" />
-  <div class="bg-[#1fb9ad] text-white p-2 rounded-lg">
-    <h1 class="text-center text-2xl font-semibold">Paling Popular</h1>
+  <div class="bg-[#1fb9ad] text-white p-2 mt-2 rounded-lg">
+    <h1 class="text-center text-2xl font-semibold">Popular Blogs</h1>
   </div>
   <!-- cards section -->
-  <div class="mt-5">
+  <div class="mt-2">
     <!-- card 1 -->
     <div class="p-4 shadow-lg rounded-md">
       <div class="flex items-start gap-x-3">
@@ -80,15 +79,15 @@
     </div>
   </div>
   <div class="bg-[#1fb9ad] text-white my-5 p-2 rounded-lg">
-    <h1 class="text-center text-2xl font-semibold">Kategori</h1>
+    <h1 class="text-center text-2xl font-semibold">Categories</h1>
   </div>
   <div class="mb-20">
     <div class="flex justify-between items-center">
-      <p>> Label 1</p>
+      <p>NuxtJs</p>
       <p>(1)</p>
     </div>
     <div class="flex justify-between items-center">
-      <p>> Label 2</p>
+      <p>JavaScript</p>
       <p>(2)</p>
     </div>
   </div>
